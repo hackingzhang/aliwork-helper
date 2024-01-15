@@ -69,6 +69,13 @@
                             宜搭开放API
                         </a>
                     
+                        <a
+                            class="link user-link "
+                            href="https://github.com/hackingzhang/aliwork-helper"
+                        >
+                            Github
+                        </a>
+                    
                 
                 
             </div>
@@ -119,6 +126,79 @@
 
 
 
+
+    <section>
+        <article><h1>Aliwork-helper: 宜搭前端 JS 工具代码库</h1>
+<p>本仓库提供了了一些钉钉宜搭前端 JS 开发常用的工具方法，包括跨应用数据源 API 封装、UI 工具函数、字段值处理、常用场景封装等，旨在提高宜搭前端开发效率。</p>
+<h2>文档</h2>
+<p>文档使用 JSDoc 生成，可以在当前仓库的 docs 目录下只找到，或者<a href="https://hackingzhang.github.io/aliwork-helper/">查看在线文档</a>。</p>
+<h2>如何使用</h2>
+<p><strong>推荐使用<a href="#%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF">代码模板</a>来组织宜搭 JS 代码</strong></p>
+<ol>
+<li>
+<h2>引入 JS 库</h2>
+<p><strong>我们不提供本库的 CDN 或者公共访问托管，请自行解决托管问题</strong><br>
+在 didMount 函数中加入以下代码来加载 Aliwork-helper：</p>
+<pre class="prettyprint source lang-Javascript"><code>this.utils.loadScript(&quot;url-to-aliwork-helper.min.js&quot;).then(() => {
+   // 加载完成后会暴露 Awh 全局变量，所有方法函数/类均可以通过 Awh.xxx 访问
+   console.log(Awh);
+   Awh.dialog(this, &quot;show&quot;， &quot;提示&quot;, &quot;加载完成&quot;);
+});
+</code></pre>
+<p>一般情况下，只需要在 didMount 中加载一次即可全局访问 Awh。但是，如果有以下情况，则建议像上面那样先加载再调用，以免因为库文件未加载完成而报错。</p>
+<ul>
+<li>代码逻辑需要在页面加载完成后立即调用本库做一些事情</li>
+<li>组件设置了除“自定义”之外的默认值（通过快捷配置、公式或者数据联动），同时设置了 onChange 事件，且需要在事件回调中调用本库</li>
+</ul>
+</li>
+<li>
+<h2>复制源码到宜搭 JS 面板</h2>
+<p>找到需要的方法函数源代码，然后将整个函数定义复制到宜搭设计器动作面板。<br>
+在文档中可以通过下面的方法找到函数源码：<br>
+每一个方法参数列表下方都有一个 View Source 按钮，后面跟着方法所在的源文件和在源文件中的行数，如下图：<br>
+<img src="https://hackingzhang.github.io/aliwork-helper/assets/how-to-locate-source-code.png" alt="定位源代码"><br>
+点击行数即可跳转到源码页面。<br>
+<img src="https://hackingzhang.github.io/aliwork-helper/assets/locate-source-code.png" alt="定位源代码"></p>
+</li>
+</ol>
+<h2>代码模板</h2>
+<p>在使用宜搭 JS 实现复杂业务场景时，一不小心就会写出几千行的代码，而宜搭 JS 不支持模块化（当然，
+可以引入外部 JS），所以如何在单个文件内组织业务代码对应用的可维护性至关重要。推荐使用下面的模板来组织宜搭 JS 代码。</p>
+<pre class="prettyprint source lang-Javascript"><code>/**
+* 尊敬的用户，你好：页面 JS 面板是高阶用法，一般不建议普通用户使用，如需使用，请确定你具备研发背景，能够自我排查问题。当然，你也可以咨询身边的技术顾问或者联系宜搭平台的技术支持获得服务（可能收费）。
+* 我们可以用 JS 面板来开发一些定制度高功能，比如：调用阿里云接口用来做图像识别、上报用户使用数据（如加载完成打点）等等。
+* 你可以点击面板上方的 「使用帮助」了解。
+*/
+
+/* -------------------------------------------------------------------------- */
+/*                                  通用工具函数/类                                  */
+/* -------------------------------------------------------------------------- */
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   具体业务代码                                   */
+/* -------------------------------------------------------------------------- */
+
+
+/* ------------------ 建议将处理同一业务逻辑的代码组织在一起，不同业务逻辑之间用单行注释块分隔，就像这样 ------------------ */
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  生命周期钩子函数                             */
+/* -------------------------------------------------------------------------- */
+
+// 当页面渲染完毕后马上调用下面的函数，这个函数是在当前页面 - 设置 - 生命周期 - 页面加载完成时中被关联的。
+export function didMount() {
+  console.log(`「页面 JS」：当前页面地址 ${location.href}`);
+  // console.log(`「页面 JS」：当前页面 id 参数为 ${this.state.urlParams.id}`);
+  // 更多 this 相关 API 请参考：https://www.yuque.com/yida/support/ocmxyv#OCEXd
+  // document.title = window.loginUser.userName + ' | 宜搭';
+}
+
+</code></pre></article>
+    </section>
 
 
 

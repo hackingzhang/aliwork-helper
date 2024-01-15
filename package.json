@@ -1,7 +1,7 @@
 {
   "name": "aliwork-helper",
   "version": "0.0.1",
-  "description": "A aliwork frontend js helper library",
+  "description": "一个宜搭JS常用工具方法库",
   "main": "/dist/aliwork-helper.js",
   "scripts": {
     "test": "jest",
