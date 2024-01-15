@@ -1,0 +1,24 @@
+.logo img {
+  height: 32px;
+  object-fit: contain;
+}
+.logo:hover img {
+  animation: 1s linear infinite jinitaimei;
+}
+.logo .navbar-item {
+  padding: 0;
+}
+
+@keyframes jinitaimei {
+  25% {
+    transform: translate(8px, -6px) rotate(-8deg);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  75% {
+    transform: translate(8px, 2px) rotate(2deg);
+  }
+}

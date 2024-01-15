@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> advanced.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="FieldChangeLogger.html">FieldChangeLogger</a></li></ul><h3>Global</h3><ul><li><a href="global.html#activateTabItems">activateTabItems</a></li><li><a href="global.html#associateForm2Subform">associateForm2Subform</a></li><li><a href="global.html#dataLinkage">dataLinkage</a></li><li><a href="global.html#dataLinkageSubform">dataLinkageSubform</a></li><li><a href="global.html#deleteFormData">deleteFormData</a></li><li><a href="global.html#dialog">dialog</a></li><li><a href="global.html#fetchSubformDatas">fetchSubformDatas</a></li><li><a href="global.html#fetchSubformDatasAll">fetchSubformDatasAll</a></li><li><a href="global.html#fieldToString">fieldToString</a></li><li><a href="global.html#fieldValueDiff">fieldValueDiff</a></li><li><a href="global.html#fieldValueEqualSingle">fieldValueEqualSingle</a></li><li><a href="global.html#generateAssociationFormFieldData">generateAssociationFormFieldData</a></li><li><a href="global.html#generateDptFieldData">generateDptFieldData</a></li><li><a href="global.html#generateEmployeeFieldData">generateEmployeeFieldData</a></li><li><a href="global.html#getFieldDataTypeById">getFieldDataTypeById</a></li><li><a href="global.html#getFieldTypeById">getFieldTypeById</a></li><li><a href="global.html#getSubformDatas">getSubformDatas</a></li><li><a href="global.html#getSubformInstance">getSubformInstance</a></li><li><a href="global.html#getSubformItemFormGroupId">getSubformItemFormGroupId</a></li><li><a href="global.html#getSubformItemIndex">getSubformItemIndex</a></li><li><a href="global.html#hijackSubmit">hijackSubmit</a></li><li><a href="global.html#loading">loading</a></li><li><a href="global.html#mergeTo">mergeTo</a></li><li><a href="global.html#onSubformChange">onSubformChange</a></li><li><a href="global.html#resolveConditionMap">resolveConditionMap</a></li><li><a href="global.html#resolveFieldMaps">resolveFieldMaps</a></li><li><a href="global.html#retry">retry</a></li><li><a href="global.html#saveFormData">saveFormData</a></li><li><a href="global.html#searchFormDataIds">searchFormDataIds</a></li><li><a href="global.html#searchFormDataIdsAll">searchFormDataIdsAll</a></li><li><a href="global.html#searchFormDatas">searchFormDatas</a></li><li><a href="global.html#searchFormDatasAll">searchFormDatasAll</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#sum2Main">sum2Main</a></li><li><a href="global.html#sumFromSubform">sumFromSubform</a></li><li><a href="global.html#syncTo">syncTo</a></li><li><a href="global.html#updateFormData">updateFormData</a></li></ul></div><div class="category"><h2>Form</h2><h3>Global</h3><ul><li><a href="global.html#getFormData">getFormData</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>advanced.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 条件规则映射项 ConditionMapItem
+ * @typedef {{from: string, to: string, isSubform: boolean}} ConditionMapItem
+ */
+
+/**
+ * 处理数据联动的条件规则映射
+ * @param {object} context this上下文 
+ * @param {Array&lt;ConditionMapItem>} conditionMap 条件规则映射 
+ * @param {string} tableFieldId 子表唯一标识
+ * @param {number} changeItemIndex 子表字段所在行下标
+ * 
+ * @returns {object} 用于查询目标表单的条件参数
+ */
+function resolveConditionMap(
+  context,
+  conditionMap,
+  tableFieldId,
+  changeItemIndex
+) {
+  const searchParams = {};
+
+  if (!Array.isArray(conditionMap)) {
+    return searchParams;
+  }
+  if (tableFieldId &amp;&amp; changeItemIndex === undefined) {
+    console.warn("[resolveConditionMap]: 传入了子表唯一标识时必须传入子表行下标");
+  }
+
+  let subformData = {};
+  const containSubformField = conditionMap.some(item => item.isSubform);
+  if (containSubformField) {
+    subformData = context.$(tableFieldId).getValue()[changeItemIndex];
+  }
+  for (const condition of conditionMap) {
+    let value;
+    if (condition.isSubform) {
+      value = subformData[condition.from];
+    } else {
+      value = context.$(condition.from).getValue();
+    }
+
+    if (condition.from.startsWith("departmentSelectField")) {
+      const dpt = (value || [])[0]
+      value = (dpt || {}).value;
+    }
+    if (condition.from.startsWith("employeeField")) {
+      const employee = (value || [])[0]
+      value = (employee || {}).key;
+    }
+
+    searchParams[condition.to] = value;
+  }
+
+  return searchParams;
+}
+
+/**
+ * 数据联动
+ * @param {object} context this上下文
+ * @param {string} targetFormUuid 目标表单UUID
+ * @param {string} targetFieldId 目标表单要带过来的字段唯一标识
+ * @param {string} fillingFieldId 要填充的本表单字段唯一标识
+ * @param {Array&lt;ConditionMapItem>} conditionMap 条件规则映射
+ * @param {(context: object, value: any) => any} postProcessor 后置处理函数
+ * @param {boolean} stirctCondition 严格的条件规则，即只要有一个条件为undefined、null或者空字符串，则填充值为空
+ */
+async function dataLinkage(
+  context,
+  targetFormUuid,
+  targetFieldId,
+  fillingFieldId,
+  conditionMap,
+  postProcessor,
+  stirctCondition = true
+) {
+  if (!targetFormUuid || !targetFieldId || !fillingFieldId) {
+    return;
+  }
+
+  // 1.组装查询参数
+  let searchParams = {};
+  if (Array.isArray(conditionMap)) {
+    searchParams = resolveConditionMap(context, conditionMap);
+  }
+
+  // 2.查询目标表单获取关联字段值
+  let fillValue = undefined;
+  const containEmptyParam = Object.values(searchParams).some(value => (value === undefined || value === null || value === ""));
+  if (!(stirctCondition &amp;&amp; containEmptyParam)) {
+    let formDatas = await searchFormDatas(context, targetFormUuid, searchParams);
+    if (formDatas.length) {
+      const formData = formDatas[0];
+      fillValue = formData[targetFieldId];
+    }
+  }
+
+  if (postProcessor instanceof Function) {
+    fillValue = postProcessor(context, fillValue);
+  }
+
+  // 3.将关联字段值填充到本表单字段
+  context.$(fillingFieldId).getProps().onChange({ value: fillValue });
+
+  console.log(`[子表数据联动]填充字段: ${fillingFieldId} 填充值: ${fillValue} 严格查询: ${stirctCondition} 查询参数: `, searchParams);
+}
+
+/**
+ * 子表数据联动
+ * @param {object} context this上下文
+ * @param {string} tableFieldId 子表唯一标识
+ * @param {string} formGroupId 子表数据行标识
+ * @param {string} targetFormUuid 目标表单UUID
+ * @param {string} targetFieldId 目标表单要带过来的字段唯一标识
+ * @param {string} fillingFieldId 要填充的本表单字段唯一标识
+ * @param {Array&lt;ConditionMapItem>} conditionMap 条件规则映射
+ * @param {(context: object, value: any) => any} postProcessor 后置处理函数
+ * @param {boolean} stirctCondition 严格的条件规则，即只要有一个条件为undefined、null或者空字符串，则填充值为空
+ */
+async function dataLinkageSubform(
+  context,
+  tableFieldId,
+  formGroupId,
+  targetFormUuid,
+  targetFieldId,
+  fillingFieldId,
+  conditionMap,
+  postProcessor,
+  stirctCondition = true
+) {
+  if (!tableFieldId || !targetFormUuid || !targetFieldId || !fillingFieldId) {
+    return;
+  }
+
+  // 1.组装查询参数
+  const changeItemIndex = getSubformItemIndex(context, formGroupId, tableFieldId);
+  let searchParams = {};
+  if (Array.isArray(conditionMap)) {
+    searchParams = resolveConditionMap(context, conditionMap, tableFieldId, changeItemIndex);
+  }
+
+  // 2.查询目标表单获取关联字段值
+  let fillValue = undefined;
+  const containEmptyParam = Object.values(searchParams).some(value => (value === undefined || value === null || value === ""));
+  if (!(stirctCondition &amp;&amp; containEmptyParam)) {
+    let formDatas = await searchFormDatas(context, targetFormUuid, searchParams);
+    if (formDatas.length) {
+      const formData = formDatas[0];
+      fillValue = formData[targetFieldId];
+    }
+  }
+
+  if (postProcessor instanceof Function) {
+    fillValue = postProcessor(context, fillValue);
+  }
+
+  // 3.将关联字段值填充到本表单字段
+  const subformInst = context.$(tableFieldId);
+  subformInst.updateItemValue(formGroupId, { [fillingFieldId]: fillValue });
+
+  console.log(`[子表数据联动]子表ID: ${tableFieldId}, 填充字段: ${fillingFieldId} 填充值: ${fillValue} 严格查询: ${stirctCondition} 查询参数: `, searchParams);
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

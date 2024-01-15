@@ -1,0 +1,40 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "plugins": [
+    "node_modules/better-docs/category"
+  ],
+  "source": {
+    "include": "src/",
+    "includePattern": ".+\\.js$"
+  },
+  "opts": {
+    "template": "node_modules/better-docs",
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true,
+    "search": true,
+    "default": {
+      "staticFiles": {}
+    },
+    "better-docs": {
+      "name": "Aliwork helper",
+      "logo": "assets/logo.png",
+      "title": "Aliwork helper",
+      "css": "styles/custom.css",
+      "hideGenerator": false,
+      "navLinks": [
+        {
+          "label": "宜搭开放API",
+          "href": "https://docs.aliwork.com/docs/developer/api/about"
+        }
+      ]
+    }
+  }
+}

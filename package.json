@@ -1,0 +1,38 @@
+{
+  "name": "aliwork-helper",
+  "version": "0.0.1",
+  "description": "A aliwork frontend js helper library",
+  "main": "/dist/aliwork-helper.js",
+  "scripts": {
+    "test": "jest",
+    "build": "rollup -c",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackingzhang/aliwork-helper.git"
+  },
+  "keywords": [
+    "aliwork",
+    "helper"
+  ],
+  "author": "hackingzhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hackingzhang/aliwork-helper/issues"
+  },
+  "homepage": "https://github.com/hackingzhang/aliwork-helper#readme",
+  "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "@rollup/plugin-terser": "^0.4.4",
+    "babel-jest": "^29.7.0",
+    "better-docs": "^2.7.3",
+    "eslint": "^8.56.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdoc": "^4.0.2",
+    "rollup": "^4.9.1"
+  }
+}
