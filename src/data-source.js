@@ -3,6 +3,8 @@
  * @module DataSource
  */
 
+import { getFieldTypeById } from "./field";
+
 /**
  * 删除表单实例数据
  * @static
@@ -301,7 +303,11 @@ async function saveFormData(context, formUuid, formData) {
 /**
  * 搜索表单（流程）实例数据（ID）选项
  * @typedef {Object} module:DataSource.SearchFormDatasOption
- * @property {Object} dynamicOrder 排序规则，详情参见
+ * @property {boolean} strictQuery 严格（精确）查询，默认不启用。当使用单行文本或者多行文本组件作为查询条件时执行的是模糊查询，
+ * 比如查询"张三"会把“张三丰”也查询出来。将strictQuery设置为ture会对查询结果执行进一步筛选，保证返回文本严格相等的数据。<br/>
+ * ⚠️查询表单实例ID方法{@link module:DataSource.searchFormDataIds} {@link module:DataSource.searchFormDataIdsAll}不支持此选项。<br/>
+ * ⚠️如果使用分页查询，严格查询的结果数量可能少于分页数量。
+ * @property {Object} dynamicOrder 排序规则
  * @property {string} originatorId 数据提交人/流程发起人工号
  * @property {string} createFrom 查询在该时间段创建的数据列表
  * @property {string} createTo 查询在该时间段创建的数据列表
@@ -322,7 +328,8 @@ async function saveFormData(context, formUuid, formData) {
  */
 
 /**
- * 查询表单实例ID列表
+ * 查询表单实例ID列表 <br/>
+ * ⚠️如果使用文本字段（单行/多行文本）作为查询条件，执行的是模糊查询，比如查询“张三”，会把“张三丰"也查询出来
  * @static
  * @param {Object} context this上下文
  * @param {"form" | "process"} type 表单类型，可选 form、process，分别代表普通表单和流程
@@ -435,7 +442,8 @@ async function searchFormDataIds(
 }
 
 /**
- * 查询符合条件的所有表单实例ID
+ * 查询符合条件的所有表单实例ID <br/>
+ * ⚠️如果使用文本字段（单行/多行文本）作为查询条件，执行的是模糊查询，比如查询“张三”，会把“张三丰"也查询出来
  * @static
  * @param {Object} context this上下文
  * @param {"form" | "process"} type 表单类型，可选 form、process，分别代表普通表单和流程
@@ -520,15 +528,19 @@ async function searchFormDataIdsAll(
 }
 
 /**
- * 查询表单实例ID响应对象
+ * 查询表单实例数据响应对象
  * @typedef {Object} module:DataSource.FormDatasResponse
  * @property {number} totalCount 表单数据总条数
  * @property {number} currentPage 当前页码
+ * @property {number} actualPageSize 接口返回的当前页数据量，当开启严格查询时，
+ * 由于进行了额外的筛选，方法返回的数据量量可能小于接口返回的数据量
  * @property {Array<Object>} formDatas 表单实例数据数组
  */
 
 /**
- * 分页查询表单实例数据
+ * 分页查询表单实例数据 <br/>
+ * ⚠️如果使用文本字段（单行/多行文本）作为查询条件，执行的是模糊查询，比如查询“张三”，会把“张三丰"也查询出来。
+ * 若要精确查询，请将options参数的strictQuery选项设置为true
  * @static
  * @param {Object} context this上下文
  * @param {"form" | "process"} type 表单类型，可选 form、process，分别代表普通表单和流程
@@ -537,7 +549,7 @@ async function searchFormDataIdsAll(
  * @param {number} currentPage 当前页， 默认为1
  * @param {number} pageSize 每页记录数， 默认为10
  * @param {module:DataSource.SearchFormDatasOption} options 查询选项
- * @returns {Promise<Array<module:DataSource.FormDatasResponse>>} 
+ * @returns {Promise<Array<module:DataSource.FormDatasResponse>>}
  * 一个Promise，resolve表单实例ID响应对象 {@link module:DataSource.FormDataIdsResponse}
  *
  * @example
@@ -557,7 +569,8 @@ async function searchFormDataIdsAll(
  *   "form",
  *   "FORM-xxxxxx",
  *   { textField_xxxxxx: "hello" },
- *   { dynamicOrder: "numberField_xxx": "+" }
+ *   // 精确查询，按照numberField_xxx升序排序
+ *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+" }
  * ).then((resp) => {
  *     const { currentPage, totalCount, formDatas } = resp;
  *     console.log(`共${totalCount}条数据`);
@@ -573,7 +586,8 @@ async function searchFormDataIdsAll(
  *   "process",
  *   "FORM-xxxxxx",
  *   { textField_xxxxxx: "hello" },
- *   { dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
+ *   // 精确查询，流程状态已完成，按照numberField_xxx升序排序
+ *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
  * ).then((ids) => {
  *     const { currentPage, totalCount, formDatas } = resp;
  *     console.log(`共${totalCount}条数据`);
@@ -601,6 +615,8 @@ async function searchFormDatas(
   if (!type) {
     type = "form";
   }
+
+  options = Object.assign({ strictQuery: false }, options);
 
   const searchFieldJson = JSON.stringify(searchFieldObject || {});
   if (options && options.dynamicOrder) {
@@ -630,7 +646,7 @@ async function searchFormDatas(
 
   const response = await req;
   const { currentPage: cPage, totalCount, data } = response;
-  const formDatas = (data || []).map((item) => ({
+  let formDatas = (data || []).map((item) => ({
     ...item,
     // 普通表单的表单数据在formData属性中
     ...item.formData,
@@ -638,15 +654,37 @@ async function searchFormDatas(
     ...item.data,
   }));
 
+  const actualPageSize = formDatas.length;
+  // 严格查询，对结果集进一步筛选，所有文本类型字段值必须和查询条件严格匹配
+  if (options.strictQuery) {
+    const textFieldMap = new Map();
+    for (const key in searchFieldObject) {
+      const fieldType = getFieldTypeById(key);
+      if (fieldType === "text" || fieldType === "textarea") {
+        textFieldMap.set(key, searchFieldObject[key]);
+      }
+    }
+
+    formDatas = formDatas.filter((formData) => {
+      for (const [fieldId, value] of textFieldMap) {
+        if (formData[fieldId] !== value) return false;
+      }
+      return true;
+    });
+  }
+
   return {
     currentPage: cPage,
+    actualPageSize,
     totalCount,
     formDatas,
   };
 }
 
 /**
- * 查询符合条件的所有表单实例
+ * 查询符合条件的所有表单实例 <br/>
+ * ⚠️如果使用文本字段（单行/多行文本）作为查询条件，执行的是模糊查询，比如查询“张三”，会把“张三丰"也查询出来。
+ * 若要精确查询，请将options参数的strictQuery选项设置为true
  * @static
  * @param {Object} context this上下文
  * @param {"form" | "process"} type 表单类型，可选 form、process，分别代表普通表单和流程
@@ -672,7 +710,8 @@ async function searchFormDatas(
  *   "form",
  *   "FORM-xxxxxx",
  *   { textField_xxxxxx: "hello" },
- *   { dynamicOrder: "numberField_xxx": "+" }
+ *   // 精确查询，按照numberField_xxx升序排序
+ *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+" }
  * ).then((formDatas) => {
  *     console.log("查询成功", formDatas);
  *   },(e) => {
@@ -686,7 +725,8 @@ async function searchFormDatas(
  *   "process",
  *   "FORM-xxxxxx",
  *   { textField_xxxxxx: "hello" },
- *   { dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
+ *   // 精确查询，流程状态已完成，按照numberField_xxx升序排序
+ *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
  * ).then((formDatas) => {
  *     console.log("查询成功", formDatas);
  *   },(e) => {
@@ -709,7 +749,7 @@ async function searchFormDatasAll(
 
   const t = true;
   while (t) {
-    const { formDatas } = await searchFormDatas(
+    const { formDatas, actualPageSize } = await searchFormDatas(
       context,
       type,
       formUuid,
@@ -720,7 +760,7 @@ async function searchFormDatasAll(
     );
     allFormDatas = allFormDatas.concat(formDatas);
 
-    if (formDatas.length !== pageSize) {
+    if (actualPageSize !== pageSize) {
       break;
     }
 

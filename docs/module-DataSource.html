@@ -341,7 +341,7 @@
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line24">line 24</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line26">line 26</a>
             </span>
         </p>
     
@@ -636,7 +636,7 @@ deleteFormData(this, "FINST-12839128319823").then(() => {
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line73">line 73</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line75">line 75</a>
             </span>
         </p>
     
@@ -912,7 +912,7 @@ fetchSubformDatas(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line141">line 141</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line143">line 143</a>
             </span>
         </p>
     
@@ -1163,7 +1163,7 @@ fetchSubformDatasAll(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line221">line 221</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line223">line 223</a>
             </span>
         </p>
     
@@ -1423,7 +1423,7 @@ getFormData(this, "process", "62a1ef56-8ded-4e77-89a0-db32c95a6d04")
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line280">line 280</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line282">line 282</a>
             </span>
         </p>
     
@@ -1523,7 +1523,8 @@ saveFormData(
     
     
     <div class="description">
-        查询表单实例ID列表
+        查询表单实例ID列表 <br/>
+⚠️如果使用文本字段（单行/多行文本）作为查询条件，执行的是模糊查询，比如查询“张三”，会把“张三丰"也查询出来
     </div>
     
 
@@ -1778,7 +1779,7 @@ saveFormData(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line382">line 382</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line389">line 389</a>
             </span>
         </p>
     
@@ -1904,7 +1905,8 @@ searchFormDataIds(
     
     
     <div class="description">
-        查询符合条件的所有表单实例ID
+        查询符合条件的所有表单实例ID <br/>
+⚠️如果使用文本字段（单行/多行文本）作为查询条件，执行的是模糊查询，比如查询“张三”，会把“张三丰"也查询出来
     </div>
     
 
@@ -2109,7 +2111,7 @@ searchFormDataIds(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line486">line 486</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line494">line 494</a>
             </span>
         </p>
     
@@ -2229,7 +2231,9 @@ searchFormDataIdsAll(
     
     
     <div class="description">
-        分页查询表单实例数据
+        分页查询表单实例数据 <br/>
+⚠️如果使用文本字段（单行/多行文本）作为查询条件，执行的是模糊查询，比如查询“张三”，会把“张三丰"也查询出来。
+若要精确查询，请将options参数的strictQuery选项设置为true
     </div>
     
 
@@ -2484,7 +2488,7 @@ searchFormDataIdsAll(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line586">line 586</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line600">line 600</a>
             </span>
         </p>
     
@@ -2554,7 +2558,8 @@ searchFormDatas(
   "form",
   "FORM-xxxxxx",
   { textField_xxxxxx: "hello" },
-  { dynamicOrder: "numberField_xxx": "+" }
+  // 精确查询，按照numberField_xxx升序排序
+  { strictQuery: true, dynamicOrder: "numberField_xxx": "+" }
 ).then((resp) => {
     const { currentPage, totalCount, formDatas } = resp;
     console.log(`共${totalCount}条数据`);
@@ -2570,7 +2575,8 @@ searchFormDatas(
   "process",
   "FORM-xxxxxx",
   { textField_xxxxxx: "hello" },
-  { dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
+  // 精确查询，流程状态已完成，按照numberField_xxx升序排序
+  { strictQuery: true, dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
 ).then((ids) => {
     const { currentPage, totalCount, formDatas } = resp;
     console.log(`共${totalCount}条数据`);
@@ -2608,7 +2614,9 @@ searchFormDatas(
     
     
     <div class="description">
-        查询符合条件的所有表单实例
+        查询符合条件的所有表单实例 <br/>
+⚠️如果使用文本字段（单行/多行文本）作为查询条件，执行的是模糊查询，比如查询“张三”，会把“张三丰"也查询出来。
+若要精确查询，请将options参数的strictQuery选项设置为true
     </div>
     
 
@@ -2813,7 +2821,7 @@ searchFormDatas(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line697">line 697</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line737">line 737</a>
             </span>
         </p>
     
@@ -2883,7 +2891,8 @@ searchFormDatasAll(
   "form",
   "FORM-xxxxxx",
   { textField_xxxxxx: "hello" },
-  { dynamicOrder: "numberField_xxx": "+" }
+  // 精确查询，按照numberField_xxx升序排序
+  { strictQuery: true, dynamicOrder: "numberField_xxx": "+" }
 ).then((formDatas) => {
     console.log("查询成功", formDatas);
   },(e) => {
@@ -2897,7 +2906,8 @@ searchFormDatasAll(
   "process",
   "FORM-xxxxxx",
   { textField_xxxxxx: "hello" },
-  { dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
+  // 精确查询，流程状态已完成，按照numberField_xxx升序排序
+  { strictQuery: true, dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
 ).then((formDatas) => {
     console.log("查询成功", formDatas);
   },(e) => {
@@ -3162,7 +3172,7 @@ searchFormDatasAll(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line767">line 767</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line807">line 807</a>
             </span>
         </p>
     
@@ -3415,7 +3425,7 @@ updateFormData(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line316">line 316</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line322">line 322</a>
             </span>
         </p>
     
@@ -3450,7 +3460,7 @@ updateFormData(
 
 
 <div class="description">
-    查询表单实例ID响应对象
+    查询表单实例数据响应对象
 </div>
 
 
@@ -3529,6 +3539,30 @@ updateFormData(
             
 <tr class="deep-level-0">
     
+        <td class="name"><code>actualPageSize</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">number</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">接口返回的当前页数据量，当开启严格查询时，
+由于进行了额外的筛选，方法返回的数据量量可能小于接口返回的数据量</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
         <td class="name"><code>formDatas</code></td>
     
 
@@ -3590,7 +3624,7 @@ updateFormData(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line522">line 522</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line530">line 530</a>
             </span>
         </p>
     
@@ -3658,6 +3692,32 @@ updateFormData(
             
 <tr class="deep-level-0">
     
+        <td class="name"><code>strictQuery</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">boolean</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">严格（精确）查询，默认不启用。当使用单行文本或者多行文本组件作为查询条件时执行的是模糊查询，
+比如查询"张三"会把“张三丰”也查询出来。将strictQuery设置为ture会对查询结果执行进一步筛选，保证返回文本严格相等的数据。<br/>
+⚠️查询表单实例ID方法<a href="module-DataSource.html#.searchFormDataIds"><code>module:DataSource.searchFormDataIds</code></a> <a href="module-DataSource.html#.searchFormDataIdsAll"><code>module:DataSource.searchFormDataIdsAll</code></a>不支持此选项。<br/>
+⚠️如果使用分页查询，严格查询的结果数量可能少于分页数量。</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
         <td class="name"><code>dynamicOrder</code></td>
     
 
@@ -3674,7 +3734,7 @@ updateFormData(
 
     
 
-    <td class="description last">排序规则，详情参见</td>
+    <td class="description last">排序规则</td>
 </tr>
 
         
@@ -3915,7 +3975,7 @@ updateFormData(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line301">line 301</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line303">line 303</a>
             </span>
         </p>
     
@@ -4090,7 +4150,7 @@ updateFormData(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line35">line 35</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line37">line 37</a>
             </span>
         </p>
     
