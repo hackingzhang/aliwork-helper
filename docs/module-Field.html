@@ -212,7 +212,9 @@
     
     
     <div class="description">
-        激活Tab组件中所有Tab项
+        激活Tab组件中所有Tab项，此方法用于解决在表单上使用Tab组件时嵌套在Tab内的组件会报错，
+且无法通过JS API获取组件实例。<br />
+一般在 didMount 中调用此函数即可。
     </div>
     
 
@@ -339,7 +341,1935 @@
         <p class="tag-source">
             <a href="field.js.html" class="button">View Source</a>
             <span>
-                <a href="field.js.html">field.js</a>, <a href="field.js.html#line12">line 12</a>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line21">line 21</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>export function didMount() {
+  activateTabItems(this, "tabsLayout_lhzy2spv");
+}</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".fieldToString">
+        <a class="href-link" href="#.fieldToString">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                fieldToString<span class="signature">(value, fieldType)</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        字段值转换为易读的字符串
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>value</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">any</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">字段值</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>fieldType</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">FieldType</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">字段类型</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line413">line 413</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>字符串</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// 日期字段
+const date = this.$("dateField_lrh5sl2w").getValue(); // 1704067200000
+fieldToString(date, getFieldTypeById("dateField_lrh5sl2w")); // "2024-01-01"
+
+// 人员字段
+const employee = this.$("dateField_lrh5sl2w").getValue(); // [{ name: "张三", value: "1343242225778381" }, { name: "李四", value: "1343242225778382" }]
+fieldToString(date, getFieldTypeById("employeeField_lrh6iy5m")); // "[张三,李四]"</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".fieldValueDiff">
+        <a class="href-link" href="#.fieldValueDiff">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                fieldValueDiff<span class="signature">(fieldType, newVal, oldVal)</span><span class="type-signature"> &rarr; {<a href="module-Field.html#~FieldValueDiff">module:Field~FieldValueDiff</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        两个相同类型的字段值的差异
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>fieldType</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">字段类型，可通过getFieldTypeById获取</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>newVal</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">any</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">新字段值</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>oldVal</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">any</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">旧字段值</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line358">line 358</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>描述两个值的差异对象</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="module-Field.html#~FieldValueDiff">module:Field~FieldValueDiff</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// [{ name: "张三", value: "1343242225778381" }, { name: "李四", value: "1343242225778382" }]
+const employeeA = this.$("employeeField_lrh5sl2v").getValue();
+// [{ name: "张三", value: "1343242225778381" }, { name: "王二", value: "1298349283929102" }]
+const employeeB = this.$("employeeField_lrhbdj3c").getValue();
+const fieldType = getFieldTypeById("employeeField_lrh5sl2v"); // employee
+fieldValueDiff(fieldType, employeeA, employeeB);
+// {
+//   isEqual: false, new: [{ name: "张三", value: "1343242225778381" }, { name: "李四", value: "1343242225778382" }],
+//   old: [{ name: "张三", value: "1343242225778381" }, { name: "王二", value: "1298349283929102" }],
+//   diff: {
+//     added: [{ name: "李四", value: "1343242225778382" }],
+//     removed: [{ name: "王二", value: "1298349283929102" }]
+//   }
+// }</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".fieldValueEqualSingle">
+        <a class="href-link" href="#.fieldValueEqualSingle">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                fieldValueEqualSingle<span class="signature">(fieldType, valA, valB)</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        判断两个字段单值是否相等，如果字段数据类型为数组，需要传入单个数组元素
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>fieldType</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">字段类型，可通过<code>getFieldTypeById</code>获取</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>valA</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">any</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">字段值A</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>valB</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">any</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">字段值B</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line277">line 277</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>两个值是否相等</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const employeeA = this.$("employeeField_lrh5sl2v").getValue();
+const employeeB = this.$("employeeField_lrhbdj3c").getValue();
+const fieldType = getFieldTypeById("employeeField_lrh5sl2v"); // employee
+fieldValueEqualSingle(fieldType, employeeA[0], employeeB[0]); // true or false</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".generateAssociationFormFieldData">
+        <a class="href-link" href="#.generateAssociationFormFieldData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                generateAssociationFormFieldData<span class="signature">(appType, formUuid, formType, instances)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        生成关联表单字段数据，可直接赋值给关联表单组件
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>appType</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">应用ID</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>formUuid</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">表单ID</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>formType</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">"receipt"</code>
+|
+
+<code class="param-type">"process"</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">单据类型，receipt-表单，process-流程</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>instances</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;AssociationFormInstance></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">关联表单实例信息数组</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line245">line 245</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const associationForm = generateAssociationFormFieldData(
+   "APP_xxxxxx",
+   "FORM-xxxxxx",
+   "receipt",
+   [{ isntanceId: "FINST-xxxxxx", title: "标题", subTitle: "副标题" }]
+);
+
+this.$("associationFormField_lrh5sl2u").setValue(associationForm);</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".generateDptFieldData">
+        <a class="href-link" href="#.generateDptFieldData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                generateDptFieldData<span class="signature">(id, name)</span><span class="type-signature"> &rarr; {object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        生成部门字段数据，可直接赋值给部门组件<br/ >
+⚠️如果传数组作为参数，ID和名称的顺序必须一一对应。<br />
+🤯通过数据源获取到的表单数据，部门字段的值就是部门ID和部门名称分开的两个数组，
+可以直接将其传入来生成可赋值给部门组件的部门字段数据。
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>id</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">部门ID，接受单个ID字符串或者ID数组</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>name</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">部门名称，接受单个名称字符串或者名称数组</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line138">line 138</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>部门字段数据</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">object</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const dpt = generateDptFieldData("047126", "财务部");
+const dpt = generateDptFieldData(["047126", "048374"], ["财务部", "人事部"]);
+
+// 结合数据源使用
+getFormData(this, "form", "FINST-xxxxxx").then(formData => {
+  const ids = formData.departmentSelectField_lbbyyrcy_id;
+  const names = formData.departmentSelectField_lbbyyrcy;
+
+  const dpt = generateDptFieldData(ids, names);
+
+  this.$("departmentSelectField_lbbxxrcz").setValue(dpt);
+});</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".generateEmployeeFieldData">
+        <a class="href-link" href="#.generateEmployeeFieldData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                generateEmployeeFieldData<span class="signature">(id, name)</span><span class="type-signature"> &rarr; {object|Array.&lt;object>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        生成员工字段数据，可直接赋值给员工组件
+⚠️如果传数组作为参数，ID和姓名的顺序必须一一对应。<br />
+🤯通过数据源获取到的表单数据，员工字段的值就是员工ID和员工姓名分开的两个数组，
+可以直接将其传入来生成可赋值给员工组件的员工字段数据。
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>id</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">员工ID，接受单个ID字符串或者ID数组</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>name</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">员工姓名，接受单个字符串或者字符串数组</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line180">line 180</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>员工字段数据</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">object</code>
+|
+
+<code class="param-type">Array.&lt;object></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const employee = generateEmployeeFieldData("1343242225778381", "张三");
+const employee = generateEmployeeFieldData(["1343242225778381", "1343242225778382"], ["张三", "李四"]);
+
+// 结合数据源使用
+getFormData(this, "form", "FINST-xxxxxx").then(formData => {
+  const ids = formData.employeeField_lm1cl4dk_id;
+  const names = formData.employeeField_lm1cl4dk;
+
+  const employee = generateEmployeeFieldData(ids, names);
+
+  this.$("employeeField_lm2ckef9").setValue(employee);
+});</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getFieldDataTypeById">
+        <a class="href-link" href="#.getFieldDataTypeById">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getFieldDataTypeById<span class="signature">(fieldId, multiple)</span><span class="type-signature"> &rarr; {string}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        根据字段唯一标识获取字段数据类型
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>fieldId</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last">字段唯一标识</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>multiple</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">boolean</code>
+
+
+  
+  </td>
+
+  
+
+  
+      <td class="default">
+      
+          false
+      
+      </td>
+  
+
+  <td class="description last">字段是否能多选，仅对人员字段有效</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line41">line 41</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>字段数据类型</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">string</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>getFieldDataTypeById("textField_lbd7nz2d"); // string
+getFieldDataTypeById("employeeField_lm1cl4dk"); // object
+getFieldDataTypeById("employeeField_lm1cl4dk", true); // array</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".getFieldTypeById">
+        <a class="href-link" href="#.getFieldTypeById">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                getFieldTypeById<span class="signature">(fieldId)</span><span class="type-signature"> &rarr; {<a href="module-Field.html#~FieldType">module:Field~FieldType</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        根据字段唯一标识获取字段类型
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>fieldId</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">字段唯一标识</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line101">line 101</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>字段类型</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="module-Field.html#~FieldType">module:Field~FieldType</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>getFieldTypeId("textField_lbd7nz2d"); // text
+getFieldTypeId("departmentSelectField_lbbyyrcy"); // departmentSelect</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".mergeTo">
+        <a class="href-link" href="#.mergeTo">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                mergeTo<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        将主表上的一些同类型字段值合并到另外一个字段
+目前仅支持合并附件类型字段
+    </div>
+    
+
+
+
+
+
+    <p class="method-parameter">
+        <label>This:</label>
+        CallbackThis.&lt;<a href="module-Field.html#~MergeToParams">module:Field~MergeToParams</a>>
+    </p>
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line536">line 536</a>
             </span>
         </p>
     
@@ -367,10 +2297,1277 @@
 
 </div>
             
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".syncTo">
+        <a class="href-link" href="#.syncTo">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                syncTo<span class="signature">(changes)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        同步组件字段的值到其他字段
+    </div>
+    
+
+
+
+
+
+    <p class="method-parameter">
+        <label>This:</label>
+        CallbackThis.&lt;<a href="module-Field.html#~SyncToParams">module:Field~SyncToParams</a>>
+    </p>
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>changes</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">any</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">变更值</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line508">line 508</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// 此函数不应该在代码中显式调用，而应该设置为组件的OnChange事件回调
+// 并在回调参数中配置要与此组件值保持同步的字段标识:
+// {
+//   "target": "textField_xxxx"
+// }
+// 上面的回调参数表示将当前组件的值同步到textField_xxxx字段</code></pre>
+    
+
+
+</div>
+            
             </div>
         </div>
     
 
+    
+        <div class='vertical-section'>
+            <h1>Type Definitions</h1>
+            <div class="members">
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Object</code>
+
+
+    </span>
+
+<h4 class="name" id="~ArrayDiff">
+    <a class="href-link" href="#~ArrayDiff">#</a>
+    
+    <span class="code-name">
+        ArrayDiff
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    数组差异对象
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>added</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Array.&lt;any></code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">新增的元素</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>removed</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Array.&lt;any></code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">删除的元素</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line320">line 320</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="~AssociationFormInstance">
+    <a class="href-link" href="#~AssociationFormInstance">#</a>
+    
+    <span class="code-name">
+        AssociationFormInstance
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    关联表单实例
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>instanceId</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">string</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">实例ID</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>title</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">string</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">显示的标题</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>subTitle</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">string</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">显示的副标题</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line219">line 219</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="~CallbackThis%3CT%3E">
+    <a class="href-link" href="#~CallbackThis%3CT%3E">#</a>
+    
+    <span class="code-name">
+        CallbackThis<T>
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>params</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">T</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">开发者手动配置的回调参数</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line485">line 485</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">"text"</code>
+|
+
+<code class="param-type">"textarea"</code>
+|
+
+<code class="param-type">"number"</code>
+|
+
+<code class="param-type">"rate"</code>
+|
+
+<code class="param-type">"radio"</code>
+|
+
+<code class="param-type">"checkbox"</code>
+|
+
+<code class="param-type">"date"</code>
+|
+
+<code class="param-type">"cascadeDate"</code>
+|
+
+<code class="param-type">"employee"</code>
+|
+
+<code class="param-type">"departmentSelect"</code>
+|
+
+<code class="param-type">"select"</code>
+|
+
+<code class="param-type">"multiSelect"</code>
+|
+
+<code class="param-type">"cascadeSelect"</code>
+|
+
+<code class="param-type">"associationForm"</code>
+|
+
+<code class="param-type">"image"</code>
+|
+
+<code class="param-type">"attachment"</code>
+|
+
+<code class="param-type">"digitalSignature"</code>
+|
+
+<code class="param-type">"countrySelect"</code>
+|
+
+<code class="param-type">"address"</code>
+
+
+    </span>
+
+<h4 class="name" id="~FieldType">
+    <a class="href-link" href="#~FieldType">#</a>
+    
+    <span class="code-name">
+        FieldType
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    字段类型
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line83">line 83</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Object</code>
+
+
+    </span>
+
+<h4 class="name" id="~FieldValueDiff">
+    <a class="href-link" href="#~FieldValueDiff">#</a>
+    
+    <span class="code-name">
+        FieldValueDiff
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    字段值差异对象
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>isEqual</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">两个值是否相等</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>new</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">any</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">新字段值</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>old</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">any</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">旧字段值</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>diff</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type"><a href="module-Field.html#~ArrayDiff">module:Field~ArrayDiff</a></code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+
+    <td class="description last">数组类型字段值差异对象</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line326">line 326</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="~MergeToParams">
+    <a class="href-link" href="#~MergeToParams">#</a>
+    
+    <span class="code-name">
+        MergeToParams
+    </span>
+    
+</h4>
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>from</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string></code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">参与合并的字段标识</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>to</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">string</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">目标字段标识，合并后的值赋值给此字段</td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>type</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">"attachment"</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">字段类型</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line525">line 525</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Object</code>
+
+
+    </span>
+
+<h4 class="name" id="~SyncToParams">
+    <a class="href-link" href="#~SyncToParams">#</a>
+    
+    <span class="code-name">
+        SyncToParams
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    syncTo方法回调参数
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>target</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">string</code>
+|
+
+<code class="param-type">Array.&lt;string></code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last">要同步的字段标识</td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="field.js.html" class="button">View Source</a>
+            <span>
+                <a href="field.js.html">field.js</a>, <a href="field.js.html#line490">line 490</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
     
 
     

@@ -71,4 +71,94 @@ async function retry(callable, retryTimes = 3, retryDelay = 300, ...args) {
   throw Error(errorMsg);
 }
 
-export { sleep, retry };
+/**
+ * 判断一个值是否为空 <br/>
+ * 这些情况会被判定为空：
+ * @param {any} value - 任意值
+ * @returns {boolean} - 值是否为空
+ *
+ * @example
+ * isEmpty(""); // true
+ * isEmpty([]); // true
+ * isEmpty(undefined); // true
+ * isEmpty(null); // true
+ * isEmpty(NaN); // true
+ * isEmpty({}); // true
+ * isEmpty(new Map()); // true
+ * isEmpty(new Set()); // true
+ *
+ * isEmpty(0); // false
+ * isEmpty({a: 1}); // false
+ * isEmpty(new Map().set("a", "1")); // false
+ */
+function isEmpty(value) {
+  if (
+    value === "" ||
+    value === null ||
+    value === undefined ||
+    (typeof value === "number" && isNaN(value))
+  )
+    return true;
+
+  if (typeof value === "object") {
+    if (Array.isArray(value)) return value.length === 0;
+    if (value instanceof Map) return value.size === 0;
+    if (value instanceof Set) return value.size === 0;
+    if (value instanceof WeakMap) return false;
+    if (value instanceof WeakSet) return false;
+
+    // 普通对象
+    if (Object.keys(value).length === 0) return true;
+  }
+
+  return false;
+}
+
+/**
+ * 日期格式化
+ * @param {Date} dateTime Date对象
+ * @param {string} format 格式化字符串，遵循ISO8601标准(YYYYY-MM-DDTHH:mm:ss.sssZ)
+ *
+ * @example
+ * dateTimeFormat(new Date(1704067200000), "YYYY年MM月DD日"); // 2024年01月01日
+ * dateTimeFormat(new Date(1704067200000), "HH时mm分ss秒sss"); // 08时00分00秒000
+ * dateTimeFormat(new Date(1704067200000), "YYYY年MM月DD日 HH时mm分ss秒sss"); // 2024年01月01日 08时00分00秒000
+ */
+function dateTimeFormat(dateTime, format) {
+  if (!dateTime) {
+    dateTime = new Date();
+  }
+
+  function padStart(str, maxLen = 2) {
+    if (typeof str !== "string") {
+      str = String(str);
+    }
+    return str.padStart(maxLen, "0");
+  }
+
+  var year = padStart(dateTime.getFullYear(), 4);
+  var month = padStart(dateTime.getMonth() + 1);
+  var date = padStart(dateTime.getDate());
+  var hours = padStart(dateTime.getHours());
+  var minutes = padStart(dateTime.getMinutes());
+  var seconds = padStart(dateTime.getSeconds());
+  var milliseconds = padStart(dateTime.getMilliseconds(), 3);
+
+  var replacement = [
+    { key: "YYYY", value: year },
+    { key: "MM", value: month },
+    { key: "DD", value: date },
+    { key: "HH", value: hours },
+    { key: "mm", value: minutes },
+    { key: "sss", value: milliseconds },
+    { key: "ss", value: seconds },
+  ];
+
+  for (var item of replacement) {
+    format = format.replace(item.key, item.value);
+  }
+
+  return format;
+}
+
+export { sleep, retry, isEmpty, dateTimeFormat };
