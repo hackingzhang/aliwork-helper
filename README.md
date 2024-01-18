@@ -38,6 +38,8 @@
 
 ## 代码模板
 
+### 宜搭 JS 模板
+
 在使用宜搭 JS 实现复杂业务场景时，一不小心就会写出几千行的代码，而宜搭 JS 不支持模块化（当然，
 可以引入外部 JS），所以如何在单个文件内组织业务代码对应用的可维护性至关重要。推荐使用下面的模板来组织宜搭 JS 代码。
 
@@ -75,4 +77,37 @@ export function didMount() {
   // document.title = window.loginUser.userName + ' | 宜搭';
 }
 
+```
+
+### 子表值变更事件处理函数模板
+
+```Javascript
+/**
+ * 子表数据变更事件模板
+ * @param {object} param0
+ */
+export function onSubformChange({ extra }) {
+  if (!extra) {
+    // TODO: 当通过JS设置子表数据时执行
+  }
+  if (extra && extra.from === "add_item") {
+    // TODO: 当点击子表新增按钮时执行
+  }
+  if (extra && extra.from === "del_item") {
+    // TODO: 当点击子表删除按钮时执行
+  }
+  if (extra && extra.from === "copy_item") {
+    // TODO: 当点击子表复制按钮时执行
+  }
+  if (extra && extra.from === "form_change") {
+    // TODO: 当子表某个字段值变更时执行
+
+    // 获取数据变更行下标
+    // const changeItemIndex = getSubformItemIndex(this, extra.formGroupId, extra.tableFieldId);
+
+    if (extra.fieldId === "textField_xxxxxx") {
+      // TODO: 匹配特定字段值变更时执行
+    }
+  }
+}
 ```
