@@ -1,4 +1,10 @@
-import { sleep, retry, isEmpty, dateTimeFormat } from "../src/utils";
+import {
+  sleep,
+  retry,
+  isEmpty,
+  dateTimeFormat,
+  generateRandomId,
+} from "../src/utils";
 
 describe("sleep function", () => {
   test("resolved after 300ms", () => {
@@ -83,5 +89,15 @@ describe("dateTimeFormat function", () => {
     expect(formated).toBe("2024-01-01 12:00:00.000");
     formated = dateTimeFormat(date, "YYYY年MM月DD日 HH时mm分ss秒sss");
     expect(formated).toBe("2024年01月01日 12时00分00秒000");
+  });
+});
+
+describe("generateRandomId function", () => {
+  test("correct formatting", () => {
+    let id;
+    id = generateRandomId();
+    expect(id).toHaveLength(32);
+    id = generateRandomId(16);
+    expect(id).toHaveLength(16);
   });
 });

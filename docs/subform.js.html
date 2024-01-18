@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> subform.js</title>
+  <title>Aliwork helper subform.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -21,7 +21,7 @@
   <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
-  <link type="text/css" rel="stylesheet" href="">
+  <link type="text/css" rel="stylesheet" href="styles/custom.css">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 
   
@@ -41,7 +41,15 @@
             <span aria-hidden="true"></span>
         </a>
         <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="assets/logo.png" alt="logo">
+                </a>
             
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Aliwork helper</h1>
+                </a>
             
         </div>
         <div class="menu">
@@ -54,6 +62,22 @@
                     Documentation
                 </a>
                 
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://docs.aliwork.com/docs/developer/api/about"
+                        >
+                            宜搭开放API
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/hackingzhang/aliwork-helper"
+                        >
+                            Github
+                        </a>
+                    
                 
                 
             </div>
@@ -66,9 +90,13 @@
             id="sidebarNav"
         >
             
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="FieldChangeLogger.html">FieldChangeLogger</a></li></ul><h3>Global</h3><ul><li><a href="global.html#activateTabItems">activateTabItems</a></li><li><a href="global.html#associateForm2Subform">associateForm2Subform</a></li><li><a href="global.html#dataLinkage">dataLinkage</a></li><li><a href="global.html#dataLinkageSubform">dataLinkageSubform</a></li><li><a href="global.html#deleteFormData">deleteFormData</a></li><li><a href="global.html#dialog">dialog</a></li><li><a href="global.html#fetchSubformDatas">fetchSubformDatas</a></li><li><a href="global.html#fetchSubformDatasAll">fetchSubformDatasAll</a></li><li><a href="global.html#fieldToString">fieldToString</a></li><li><a href="global.html#fieldValueDiff">fieldValueDiff</a></li><li><a href="global.html#fieldValueEqualSingle">fieldValueEqualSingle</a></li><li><a href="global.html#generateAssociationFormFieldData">generateAssociationFormFieldData</a></li><li><a href="global.html#generateDptFieldData">generateDptFieldData</a></li><li><a href="global.html#generateEmployeeFieldData">generateEmployeeFieldData</a></li><li><a href="global.html#getFieldDataTypeById">getFieldDataTypeById</a></li><li><a href="global.html#getFieldTypeById">getFieldTypeById</a></li><li><a href="global.html#getSubformDatas">getSubformDatas</a></li><li><a href="global.html#getSubformInstance">getSubformInstance</a></li><li><a href="global.html#getSubformItemFormGroupId">getSubformItemFormGroupId</a></li><li><a href="global.html#getSubformItemIndex">getSubformItemIndex</a></li><li><a href="global.html#hijackSubmit">hijackSubmit</a></li><li><a href="global.html#loading">loading</a></li><li><a href="global.html#mergeTo">mergeTo</a></li><li><a href="global.html#onSubformChange">onSubformChange</a></li><li><a href="global.html#resolveConditionMap">resolveConditionMap</a></li><li><a href="global.html#resolveFieldMaps">resolveFieldMaps</a></li><li><a href="global.html#retry">retry</a></li><li><a href="global.html#saveFormData">saveFormData</a></li><li><a href="global.html#searchFormDataIds">searchFormDataIds</a></li><li><a href="global.html#searchFormDataIdsAll">searchFormDataIdsAll</a></li><li><a href="global.html#searchFormDatas">searchFormDatas</a></li><li><a href="global.html#searchFormDatasAll">searchFormDatasAll</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#sum2Main">sum2Main</a></li><li><a href="global.html#sumFromSubform">sumFromSubform</a></li><li><a href="global.html#syncTo">syncTo</a></li><li><a href="global.html#updateFormData">updateFormData</a></li></ul></div><div class="category"><h2>Form</h2><h3>Global</h3><ul><li><a href="global.html#getFormData">getFormData</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DataSource.html">DataSource</a></li><li><a href="module-Field.html">Field</a></li><li><a href="module-Subform.html">Subform</a></li><li><a href="module-UI.html">UI</a></li><li><a href="module-Utils.html">Utils</a></li></ul><h3>Classes</h3><ul><li><a href="FieldChangeLogger.html">FieldChangeLogger</a></li><li><a href="module-Subform-Subform.html">Subform</a></li></ul></div>
                 
             </nav>
         </div>
@@ -86,122 +114,193 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * 获取子表实例
- * @param {object} context this上下文
- * @param {string} tableFieldId 子表唯一标识
- * @returns
+ * 子表单相关工具方法
+ * @module Subform
  */
-function getSubformInstance(context, tableFieldId) {
-  return context.$(tableFieldId);
-}
+
+import { getFormData } from "./data-source";
 
 /**
- * 获取子表数据
- * @param {object} context this上下文
- * @param {string} tableFieldId 子表唯一标识
- * @returns
+ * 子表工具类，提供子表常用操作方法 &lt;br/>
+ *
+ * 概念解释： &lt;br/>
+ * formGroupId：一个ID字符串，是子表数据项的唯一标识
  */
-function getSubformDatas(context, tableFieldId) {
-  return getSubformInstance(context, tableFieldId).getValue();
-}
-
-/**
- * 根据子表项formGroupId获取子表项索引
- * @param {object} context this上下文
- * @param {string} formGroupId 子表项formGroupId，可通过子表值变更事件参数的extra属性获取
- * @param {string} tableFieldId 子表唯一标识
- * @returns {number} 子表项索引，未找到返回-1
- */
-function getSubformItemIndex(context, formGroupId, tableFieldId) {
-  const subFormInst = context.$(tableFieldId);
-  const items = subFormInst.getItems() || [];
-  return items.findIndex((item) => item === formGroupId);
-}
-
-/**
- * 根据子表项索引下标获取子表项formGroupId
- * @param {object} context this上下文
- * @param {number} index 子表项索引
- * @param {string} tableFieldId 子表唯一标识
- * @returns {string} 子表项formGroupId，未找到返回undefined
- */
-function getSubformItemFormGroupId(context, index, tableFieldId) {
-  const subFormInst = context.$(tableFieldId);
-  const items = subFormInst.getItems() || [];
-  return items[index];
-}
-
-/**
- * sumFromSubform option 参数类型定义
- * @typedef {Object} SumFromSubformOption
- * @property {boolean} ignoreEmpty - 是否跳过空数据
- * @property {boolean} ignoreDuplicate - 是否跳过重复数据
- * @property {Function} filter - 一个数据过滤函数，接受子表行数据作为参数，返回falsy值跳过当前行
- */
-/**
- * 获取子表字段的汇总数据
- * @param {Object} context this上下文
- * @param {string} tableFieldId 子表唯一标识
- * @param {string} fieldInSubform 要汇总到主表的子表字段
- * @param {"string" | "number" | "dpt" | "employee"} dataType 字段数据类型，默认为string类型
- * @param {SumFromSubformOption} option 扩展选项
- */
-function sumFromSubform(context, tableField, fieldInSubform, dataType, option) {
-  dataType = dataType || "string";
-  option = Object.assign(
-    {
-      ignoreEmpty: true,
-      ignoreDuplicate: true,
-      filter: () => true,
-    },
-    option
-  );
-
-  const subformDataList = getSubformDatas(context, tableField);
-
-  let sumData = [];
-  for (const subformDataItem of subformDataList) {
-    const fieldData = subformDataItem[fieldInSubform];
-
-    // 过滤数据
-    if (option.filter &amp;&amp; option.filter instanceof Function) {
-      const goOn = option.filter(subformDataItem);
-      if (!goOn) continue;
+class Subform {
+  /**
+   * 创建一个子表工具类实例
+   * @param {Object} context this上下文
+   * @param {string} tableFieldId 子表唯一标识
+   */
+  constructor(context, tableFieldId) {
+    this.tableFieldId = tableFieldId;
+    this.instance = context.$(tableFieldId);
+    if (!this.instance) {
+      this.noInstanceError();
     }
+  }
 
-    // 跳过空数据
-    if (option.ignoreEmpty &amp;&amp; (fieldData === null || fieldData === undefined)) {
-      continue;
+  /**
+   * 无法获取子表实例报错
+   */
+  noInstanceError() {
+    throw Error(
+      `无法获取到唯一标识为${this.tableFieldId}的子表单，请检查标识是否正确`
+    );
+  }
+
+  /**
+   * 获取子表组件实例
+   * @returns {Object} 子表组件实例
+   */
+  getInstance() {
+    return this.instance;
+  }
+
+  /**
+   * 获取子表数据列表
+   * @returns {Array&lt;Object>} 子表数据列表
+   */
+  getDatas() {
+    return this.instance.getValue();
+  }
+
+  /**
+   * 设置整个子表的数据
+   * @param {Array&lt;Object>} datas 子表数据列表
+   */
+  setDatas(datas) {
+    this.instance.setValue(datas);
+  }
+
+  /**
+   * 获取子表项formGroupId列表
+   * @returns {Array&lt;string>} formGroupId列表
+   */
+  getItems() {
+    return this.instance.getItems();
+  }
+
+  /**
+   * 根据子表项formGroupId获取子表项索引
+   * @param {string} formGroupId formGroupId
+   * @returns {number} 索引下标
+   */
+  getIndex(formGroupId) {
+    const items = this.getItems() || [];
+    return items.findIndex((item) => item === formGroupId);
+  }
+
+  /**
+   * 根据子表项索引获取formGroupId
+   * @param {number} index 索引下标
+   * @returns {string} formGroupId
+   */
+  getFormGroupId(index) {
+    const items = this.getItems() || [];
+    return items[index];
+  }
+
+  /**
+   * 更新子表单行数据
+   * @param {number | string} id 可传入要更新的行下标或者formGroupId
+   * @param {Object} data 要更新的字段值对象
+   */
+  updateItem(id, data) {
+    if (typeof id === "number") {
+      id = this.getFormGroupId(id);
     }
+    this.instance.updateItemValue(id, data);
+  }
 
-    switch (dataType) {
-      case "number": {
-        let num = Number(fieldData);
-        if (isNaN(num)) num = 0;
-        sumData.push(num);
-        break;
+  /**
+   * summary 方法 option 参数类型定义
+   * @typedef {Object} SubformSummaryOption
+   * @property {boolean} ignoreEmpty 是否跳过空数据
+   * @property {boolean} ignoreDuplicate 是否跳过重复数据
+   * @property {Function} filter 一个数据过滤函数，接受子表行数据作为参数，返回falsy值跳过当前行
+   */
+  /**
+   * 汇总子表中指定字段的值
+   * @param {string} fieldId 要汇总到主表的子表字段
+   * @param {"string" | "number" | "dpt" | "employee"} [dataType] 字段数据类型，默认为string类型
+   * @param {module:Subfor~SubformSummaryOption} [option] 扩展选项
+   */
+  summary(fieldId, dataType, option) {
+    dataType = dataType || "string";
+    option = Object.assign(
+      {
+        ignoreEmpty: true,
+        ignoreDuplicate: true,
+        filter: () => true,
+      },
+      option
+    );
+
+    const subformDataList = this.getDatas();
+
+    let sumData = [];
+    for (const subformDataItem of subformDataList) {
+      const fieldData = subformDataItem[fieldId];
+
+      // 过滤数据
+      if (option.filter &amp;&amp; option.filter instanceof Function) {
+        const goOn = option.filter(subformDataItem);
+        if (!goOn) continue;
       }
-      case "string":
-        // 跳过空数据
-        if (option.ignoreEmpty &amp;&amp; fieldData === "") break;
-        // 跳过重复数据
-        if (
-          option.ignoreDuplicate &amp;&amp;
-          sumData.some((item) => item === fieldData)
-        ) {
+
+      // 跳过空数据
+      if (
+        option.ignoreEmpty &amp;&amp;
+        (fieldData === null || fieldData === undefined)
+      ) {
+        continue;
+      }
+
+      switch (dataType) {
+        case "number": {
+          let num = Number(fieldData);
+          if (isNaN(num)) num = 0;
+          sumData.push(num);
           break;
         }
+        case "string":
+          // 跳过空数据
+          if (option.ignoreEmpty &amp;&amp; fieldData === "") break;
+          // 跳过重复数据
+          if (
+            option.ignoreDuplicate &amp;&amp;
+            sumData.some((item) => item === fieldData)
+          ) {
+            break;
+          }
 
-        sumData.push(fieldData);
-        break;
-      case "employee":
-        // 多选模式
-        if (Array.isArray(fieldData)) {
-          for (const employee of fieldData) {
-            // NOTICE: 如果是手动选择的成员组件值，员工编号存放在value字段
-            // 如果是关联表单填充的成员组件值，则员工编号存放在key字段中
-            const workId = employee.value || employee.key;
-            if (!workId) continue;
+          sumData.push(fieldData);
+          break;
+        case "employee":
+          // 多选模式
+          if (Array.isArray(fieldData)) {
+            for (const employee of fieldData) {
+              // NOTICE: 如果是手动选择的成员组件值，员工编号存放在value字段
+              // 如果是关联表单填充的成员组件值，则员工编号存放在key字段中
+              const workId = employee.value || employee.key;
+              if (!workId) continue;
+              // 跳过重复数据
+              if (
+                option.ignoreDuplicate &amp;&amp;
+                sumData.some((item) => {
+                  const id = item.value || item.key;
+                  return id === workId;
+                })
+              ) {
+                continue;
+              }
+              sumData.push(employee);
+            }
+          }
+          // 单选模式
+          else {
+            const workId = fieldData.value || fieldData.key;
             // 跳过重复数据
             if (
               option.ignoreDuplicate &amp;&amp;
@@ -210,53 +309,38 @@ function sumFromSubform(context, tableField, fieldInSubform, dataType, option) {
                 return id === workId;
               })
             ) {
+              break;
+            }
+            sumData.push(fieldData);
+          }
+          break;
+        case "dpt":
+          for (const dpt of fieldData) {
+            // 跳过重复数据
+            if (
+              option.ignoreDuplicate &amp;&amp;
+              sumData.some((item) => item.value === dpt.value)
+            ) {
               continue;
             }
-            sumData.push(employee);
+            sumData.push(dpt);
           }
-        }
-        // 单选模式
-        else {
-          const workId = fieldData.value || fieldData.key;
-          // 跳过重复数据
-          if (
-            option.ignoreDuplicate &amp;&amp;
-            sumData.some((item) => {
-              const id = item.value || item.key;
-              return id === workId;
-            })
-          ) {
-            break;
-          }
-          sumData.push(fieldData);
-        }
-        break;
-      case "dpt":
-        for (const dpt of fieldData) {
-          // 跳过重复数据
-          if (
-            option.ignoreDuplicate &amp;&amp;
-            sumData.some((item) => item.value === dpt.value)
-          ) {
-            continue;
-          }
-          sumData.push(dpt);
-        }
-        break;
+          break;
+      }
     }
-  }
 
-  return sumData;
+    return sumData;
+  }
 }
 
 /**
  * sum2Main option 参数类型定义
  * @typedef {Object} SumOption
- * @property {boolean} ignoreEmpty - 是否跳过空数据
- * @property {boolean} ignoreDuplicate - 是否跳过重复数据
- * @property {boolean} appendMode - 追加模式，数据追加到主表字段上，而不是覆盖
- * @property {Function} filter - 一个数据过滤函数，接受子表行数据作为参数，返回falsy值跳过当前行
- * @property {string} separator - 当数据类型为string时的分隔符
+ * @property {boolean} ignoreEmpty 是否跳过空数据，默认为true
+ * @property {boolean} ignoreDuplicate 是否跳过重复数据，默认为true
+ * @property {boolean} appendMode 追加模式，数据追加到主表字段上，而不是覆盖，默认为false
+ * @property {Function} filter 一个数据过滤函数，接受子表行数据作为参数，返回falsy值跳过当前行
+ * @property {string} separator 当数据类型为string时的分隔符，默认为半角逗号","
  */
 /**
  * 子表字段汇总到主表
@@ -287,17 +371,12 @@ function sum2Main(
     option
   );
 
-  let sumData = sumFromSubform(
-    context,
-    tableFieldId,
-    fieldInSubform,
-    dataType,
-    {
-      ignoreEmpty: option.ignoreEmpty,
-      ignoreDuplicate: option.ignoreDuplicate,
-      filter: option.filter,
-    }
-  );
+  const subform = new Subform(context, tableFieldId);
+  let sumData = subform.summary(fieldInSubform, dataType, {
+    ignoreEmpty: option.ignoreEmpty,
+    ignoreDuplicate: option.ignoreDuplicate,
+    filter: option.filter,
+  });
 
   // 追加模式
   if (option.appendMode) {
@@ -360,21 +439,21 @@ function sum2Main(
 /**
  * FieldMap配置类型定义
  * @typedef {Object} FieldMapItem
- * @property {string} from - 源字段
- * @property {string} to - 填充字段
- * @property {"string" | "number" | "employee" | "dpt"} type - 字段数据类型
- * @property {boolean} multiSelect - 是否多选字段，type为employee时有用
+ * @property {string} from 源字段
+ * @property {string} to 填充字段
+ * @property {"string" | "number" | "employee" | "dpt"} type 字段数据类型
+ * @property {boolean} multiSelect 是否多选字段，type为employee时有用
  */
 /**
  * AF2SubformOption 配置类型定义
  * @typedef {Object} AF2SubformOption
- * @property {string} keepOldData - 是否保留非关联表单填充的旧数据
+ * @property {string} keepOldData 是否保留非关联表单填充的旧数据
  */
 /**
  * 处理字段映射，组装并返回新的表单数据对象
- * @param {Object} formData - 来源表单数据，如果来源为关联表单子表则为子表数据项目
- * @param {FieldMapItem[]} fieldMaps - 字段映射定义
- * @param {Object} mainFormData - 主表数据，如果来源是关联表单子表则该字段传主表数据，否则传null
+ * @param {Object} formData 来源表单数据，如果来源为关联表单子表则为子表数据项目
+ * @param {FieldMapItem[]} fieldMaps 字段映射定义
+ * @param {Object} mainFormData 主表数据，如果来源是关联表单子表则该字段传主表数据，否则传null
  * @returns {Object} 新的表单数据对象
  */
 function resolveFieldMaps(
@@ -467,7 +546,7 @@ async function associateForm2Subform(
   }
 
   const associateForm = context.$(assocaiteFieldId).getValue() || [];
-  const localSubformDataList = getSubformDatas(context, localSubformId);
+  const localSubformDataList = context.$(localSubformId).getValue();
 
   // 1.找到需要从子表新增哪些关联表单数据
   const formShouldInsert = [];
@@ -530,41 +609,14 @@ async function associateForm2Subform(
     }
   }
 
-  getSubformInstance(context, localSubformId).setValue(newSubformDataList);
+  context.$(localSubformId).setValue(newSubformDataList);
   console.log(
     `%c[关联表单填充子表]新增了${newSubformDataList.length}条子表数据`,
     "color: purple"
   );
 }
 
-/**
- * 子表数据变更事件模板
- * @param {object} param0
- */
-export function onSubformChange({ extra }) {
-  if (!extra) {
-    // TODO: 当通过JS设置子表数据时执行
-  }
-  if (extra &amp;&amp; extra.from === "add_item") {
-    // TODO: 当点击子表新增按钮时执行
-  }
-  if (extra &amp;&amp; extra.from === "del_item") {
-    // TODO: 当点击子表删除按钮时执行
-  }
-  if (extra &amp;&amp; extra.from === "copy_item") {
-    // TODO: 当点击子表复制按钮时执行
-  }
-  if (extra &amp;&amp; extra.from === "form_change") {
-    // TODO: 当子表某个字段值变更时执行
-
-    // 获取数据变更行下标
-    // const changeItemIndex = getSubformItemIndex(this, extra.formGroupId, extra.tableFieldId);
-
-    if (extra.fieldId === "textField_xxxxxx") {
-      // TODO: 匹配特定字段值变更时执行
-    }
-  }
-}
+export { Subform, sum2Main, associateForm2Subform };
 </code></pre>
         </article>
     </section>
@@ -591,6 +643,8 @@ export function onSubformChange({ extra }) {
 <script src="scripts/app.min.js"></script>
 <script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
 
 
 </body>

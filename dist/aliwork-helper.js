@@ -79,7 +79,8 @@
 
   /**
    * 判断一个值是否为空 <br/>
-   * 这些情况会被判定为空：
+   * 这些情况会被判定为空：空字符串、null、undefined、NaN、空数组、空对象、空Map、空Set
+   * @static
    * @param {any} value - 任意值
    * @returns {boolean} - 值是否为空
    *
@@ -122,6 +123,7 @@
 
   /**
    * 日期格式化
+   * @static
    * @param {Date} dateTime Date对象
    * @param {string} format 格式化字符串，遵循ISO8601标准(YYYYY-MM-DDTHH:mm:ss.sssZ)
    *
@@ -165,6 +167,26 @@
     }
 
     return format;
+  }
+
+  /**
+   * 生成一个（伪）随机ID
+   * @static
+   * @param {number} length ID长度
+   * @returns {string} 生成的ID
+   *
+   * @example
+   * const id = generateRandomId(); // 生成一个32个字符的ID
+   * const id = generateRandomId(16); // 生成一个16个字符的ID
+   */
+  function generateRandomId(length = 32) {
+    const validChars = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let id = "";
+    for (let i = 0; i < length; i++) {
+      id += validChars[Math.floor(Math.random() * 35)];
+    }
+
+    return id;
   }
 
   /**
@@ -1761,6 +1783,7 @@
   exports.generateAssociationFormFieldData = generateAssociationFormFieldData;
   exports.generateDptFieldData = generateDptFieldData;
   exports.generateEmployeeFieldData = generateEmployeeFieldData;
+  exports.generateRandomId = generateRandomId;
   exports.getFieldDataTypeById = getFieldDataTypeById;
   exports.getFieldTypeById = getFieldTypeById;
   exports.getFormData = getFormData;
