@@ -1,119 +1,4 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aliwork helper subform.js</title>
-
-  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./build/entry.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
-  <link type="text/css" rel="stylesheet" href="styles/custom.css">
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-  
-</head>
-
-
-
-<body class="layout small-header">
-    <div id="stickyNavbarOverlay"></div>
-    
-
-<div class="top-nav">
-    <div class="inner">
-        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-        <div class="logo">
-             
-                <a class="image" href="index.html">
-                    <img src="assets/logo.png" alt="logo">
-                </a>
-            
-             
-                <a href="index.html">
-                    <h1 class="navbar-item">Aliwork helper</h1>
-                </a>
-            
-        </div>
-        <div class="menu">
-            
-            <div class="navigation">
-                <a
-                    href="index.html"
-                    class="link"
-                >
-                    Documentation
-                </a>
-                
-                 
-                    
-                        <a
-                            class="link user-link "
-                            href="https://docs.aliwork.com/docs/developer/api/about"
-                        >
-                            宜搭开放API
-                        </a>
-                    
-                        <a
-                            class="link user-link "
-                            href="https://github.com/hackingzhang/aliwork-helper"
-                        >
-                            Github
-                        </a>
-                    
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-    <div id="main">
-        <div
-            class="sidebar "
-            id="sidebarNav"
-        >
-            
-                <div class="search-wrapper">
-                    <input id="search" type="text" placeholder="Search docs..." class="input">
-                </div>
-            
-            <nav>
-                
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DataSource.html">DataSource</a></li><li><a href="module-Field.html">Field</a></li><li><a href="module-Subform.html">Subform</a></li><li><a href="module-UI.html">UI</a></li><li><a href="module-Utils.html">Utils</a></li></ul><h3>Classes</h3><ul><li><a href="FieldChangeLogger.html">FieldChangeLogger</a></li><li><a href="module-Subform-Subform.html">Subform</a></li></ul></div>
-                
-            </nav>
-        </div>
-        <div class="core" id="main-content-wrapper">
-            <div class="content">
-                <header class="page-title">
-                    <p>Source</p>
-                    <h1>subform.js</h1>
-                </header>
-                
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
+/**
  * 子表单相关工具方法
  * @module Subform
  */
@@ -129,9 +14,9 @@ import { getFormData } from "./data-source";
  */
 
 /**
- * 子表工具类，提供子表常用操作方法 &lt;br/>
+ * 子表工具类，提供子表常用操作方法 <br/>
  *
- * 概念解释： &lt;br/>
+ * 概念解释： <br/>
  * formGroupId：一个ID字符串，是子表数据项的唯一标识
  */
 class Subform {
@@ -176,7 +61,7 @@ class Subform {
 
   /**
    * 获取子表数据列表
-   * @returns {Array&lt;Object>} 子表数据列表
+   * @returns {Array<Object>} 子表数据列表
    *
    * @example
    * const subform = new Subform(this, "tableField_xxxxxx");
@@ -188,7 +73,7 @@ class Subform {
 
   /**
    * 设置整个子表的数据
-   * @param {Array&lt;Object>} datas 子表数据列表
+   * @param {Array<Object>} datas 子表数据列表
    *
    * @example
    * const subform = new Subform(this, "tableField_xxxxxx");
@@ -200,7 +85,7 @@ class Subform {
 
   /**
    * 获取子表项formGroupId列表
-   * @returns {Array&lt;string>} formGroupId列表
+   * @returns {Array<string>} formGroupId列表
    *
    * @example
    * const subform = new Subform(this, "tableField_xxxxxx");
@@ -262,7 +147,7 @@ class Subform {
    * @param {string} fieldId 要汇总到主表的子表字段
    * @param {"string" | "number" | "dpt" | "employee"} [dataType] 字段数据类型，默认为string类型
    * @param {module:Subform~SubformSummaryOption} [option] 扩展选项
-   * @return {Array&lt;any>} 汇总字段值数组
+   * @return {Array<any>} 汇总字段值数组
    *
    * @example
    * const subform = new Subform(this, "tableField_xxxxxx");
@@ -286,14 +171,14 @@ class Subform {
       const fieldData = subformDataItem[fieldId];
 
       // 过滤数据
-      if (option.filter &amp;&amp; option.filter instanceof Function) {
+      if (option.filter && option.filter instanceof Function) {
         const goOn = option.filter(subformDataItem);
         if (!goOn) continue;
       }
 
       // 跳过空数据
       if (
-        option.ignoreEmpty &amp;&amp;
+        option.ignoreEmpty &&
         (fieldData === null || fieldData === undefined)
       ) {
         continue;
@@ -308,10 +193,10 @@ class Subform {
         }
         case "string":
           // 跳过空数据
-          if (option.ignoreEmpty &amp;&amp; fieldData === "") break;
+          if (option.ignoreEmpty && fieldData === "") break;
           // 跳过重复数据
           if (
-            option.ignoreDuplicate &amp;&amp;
+            option.ignoreDuplicate &&
             sumData.some((item) => item === fieldData)
           ) {
             break;
@@ -329,7 +214,7 @@ class Subform {
               if (!workId) continue;
               // 跳过重复数据
               if (
-                option.ignoreDuplicate &amp;&amp;
+                option.ignoreDuplicate &&
                 sumData.some((item) => {
                   const id = item.value || item.key;
                   return id === workId;
@@ -345,7 +230,7 @@ class Subform {
             const workId = fieldData.value || fieldData.key;
             // 跳过重复数据
             if (
-              option.ignoreDuplicate &amp;&amp;
+              option.ignoreDuplicate &&
               sumData.some((item) => {
                 const id = item.value || item.key;
                 return id === workId;
@@ -360,7 +245,7 @@ class Subform {
           for (const dpt of fieldData) {
             // 跳过重复数据
             if (
-              option.ignoreDuplicate &amp;&amp;
+              option.ignoreDuplicate &&
               sumData.some((item) => item.value === dpt.value)
             ) {
               continue;
@@ -435,7 +320,7 @@ function sum2Main(
         const existData = (fieldData || "").split(",");
         existData.forEach((str) => {
           // 跳过重复数据
-          if (option.ignoreDuplicate &amp;&amp; sumData.indexOf(str) !== -1) return;
+          if (option.ignoreDuplicate && sumData.indexOf(str) !== -1) return;
           sumData.unshift(str);
         });
         break;
@@ -453,7 +338,7 @@ function sum2Main(
           if (!workId) return;
           // 跳过重复数据
           if (
-            option.ignoreDuplicate &amp;&amp;
+            option.ignoreDuplicate &&
             sumData.some((item) => (item.value || item.key) === workId)
           )
             return;
@@ -466,7 +351,7 @@ function sum2Main(
         existData.forEach((dpt) => {
           // 跳过重复数据
           if (
-            option.ignoreDuplicate &amp;&amp;
+            option.ignoreDuplicate &&
             sumData.some((item) => item.value === dpt.value)
           )
             return;
@@ -501,7 +386,7 @@ function sum2Main(
 /**
  * 处理字段映射，组装并返回新的表单数据对象
  * @param {Object} formData 来源表单数据，如果来源为关联表单子表则为子表数据项目
- * @param {Array&lt;module:Subform~FieldMapItem>} fieldMaps 字段映射定义
+ * @param {Array<module:Subform~FieldMapItem>} fieldMaps 字段映射定义
  * @param {Object} mainFormData 主表数据，如果来源是关联表单子表则该字段传主表数据，否则传null
  * @returns {Object} 新的表单数据对象
  */
@@ -522,7 +407,7 @@ function resolveFieldMaps(
     const values = formData[from];
 
     // 自定义映射方法
-    if (handler &amp;&amp; handler instanceof Function) {
+    if (handler && handler instanceof Function) {
       dataItem[to] = handler(formData, mainFormData, associateForm);
       continue;
     }
@@ -604,7 +489,7 @@ async function associateForm2Subform(
 ) {
   formType = formType || "form";
   options = Object.assign({ keepOldData: true }, options);
-  if (isDataFromSubform &amp;&amp; !remoteSubformId) {
+  if (isDataFromSubform && !remoteSubformId) {
     throw new Error(
       "remoteSubformId is reqired while isDataFromSubform is set to true"
     );
@@ -634,7 +519,7 @@ async function associateForm2Subform(
   for (const subformDataItem of localSubformDataList) {
     const instId = subformDataItem[formInstIdField];
     // 子表中的表单实例Id字段为空或者和关联表单匹配的，认为是要保留的，其余删除
-    if (options.keepOldData &amp;&amp; !instId) {
+    if (options.keepOldData && !instId) {
       newSubformDataList.push(subformDataItem);
     } else if (associateForm.some((item) => item.instanceId === instId)) {
       newSubformDataList.push(subformDataItem);
@@ -682,35 +567,3 @@ async function associateForm2Subform(
 }
 
 export { Subform, sum2Main, associateForm2Subform };
-</code></pre>
-        </article>
-    </section>
-
-
-
-
-            </div>
-            
-            <footer class="footer">
-                <div class="content has-text-centered">
-                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
-                    <p class="sidebar-created-by">
-                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
-                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
-                    </p>
-                </div>
-            </footer>
-            
-        </div>
-        <div id="side-nav" class="side-nav">
-        </div>
-    </div>
-<script src="scripts/app.min.js"></script>
-<script>PR.prettyPrint();</script>
-<script src="scripts/linenumber.js"> </script>
-
-<script src="scripts/search.js"> </script>
-
-
-</body>
-</html>

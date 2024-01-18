@@ -201,13 +201,13 @@
 
 
     
-    <h4 class="name" id="~associateForm2Subform">
-        <a class="href-link" href="#~associateForm2Subform">#</a>
+    <h4 class="name" id=".associateForm2Subform">
+        <a class="href-link" href="#.associateForm2Subform">#</a>
         
             
                 <span class='tag'>async</span>
             
-                <span class='tag'>inner</span>
+                <span class='tag'>static</span>
             
         
         <span class="code-name">
@@ -393,7 +393,7 @@
   <td class="type">
   
       
-<code class="param-type">Array.&lt;FieldMapItem></code>
+<code class="param-type">Array.&lt;<a href="module-Subform.html#~FieldMapItem">module:Subform~FieldMapItem</a>></code>
 
 
   
@@ -468,7 +468,7 @@
   <td class="type">
   
       
-<code class="param-type">AF2SubformOption</code>
+<code class="param-type"><a href="module-Subform.html#~AF2SubformOption">module:Subform~AF2SubformOption</a></code>
 
 
   
@@ -526,7 +526,7 @@
         <p class="tag-source">
             <a href="subform.js.html" class="button">View Source</a>
             <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line414">line 414</a>
+                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line479">line 479</a>
             </span>
         </p>
     
@@ -552,231 +552,23 @@
 
 
 
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="~resolveFieldMaps">
-        <a class="href-link" href="#~resolveFieldMaps">#</a>
-        
-            
-                <span class='tag'>inner</span>
-            
-        
-        <span class="code-name">
-            
-                resolveFieldMaps<span class="signature">(formData, fieldMaps, mainFormData)</span><span class="type-signature"> &rarr; {Object}</span>
-            
-        </span>
-    </h4>
-    
-
+    <h5>Example</h5>
     
     
-    <div class="description">
-        处理字段映射，组装并返回新的表单数据对象
-    </div>
+        <pre class="prettyprint"><code>export function onAssocciateFormChange() {
+  // 将关联表单对应的表单值填充到本表单子表中
+  associateForm2Subform(
+    this, 
+    "form", 
+    "associationFormField_lrimaemr", 
+    "tableField_xxxxxx", 
+    "textField_xxxxxx", 
+    [{from: "textField_xxxxxx", to: "textField_xxxxxx", type: "string" }], 
+    false, 
+    { keepOldData: true }
+  );
+}</code></pre>
     
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>formData</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">Object</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">来源表单数据，如果来源为关联表单子表则为子表数据项目</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>fieldMaps</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">Array.&lt;FieldMapItem></code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">字段映射定义</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>mainFormData</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">Object</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">主表数据，如果来源是关联表单子表则该字段传主表数据，否则传null</td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="subform.js.html" class="button">View Source</a>
-            <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line344">line 344</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'>新的表单数据对象</div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<code class="param-type">Object</code>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
 
 
 </div>
@@ -785,11 +577,11 @@
 
 
     
-    <h4 class="name" id="~sum2Main">
-        <a class="href-link" href="#~sum2Main">#</a>
+    <h4 class="name" id=".sum2Main">
+        <a class="href-link" href="#.sum2Main">#</a>
         
             
-                <span class='tag'>inner</span>
+                <span class='tag'>static</span>
             
         
         <span class="code-name">
@@ -981,7 +773,7 @@
   <td class="type">
   
       
-<code class="param-type">SumOption</code>
+<code class="param-type"><a href="module-Subform.html#~SumOption">module:Subform~SumOption</a></code>
 
 
   
@@ -1039,7 +831,7 @@
         <p class="tag-source">
             <a href="subform.js.html" class="button">View Source</a>
             <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line239">line 239</a>
+                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line288">line 288</a>
             </span>
         </p>
     
@@ -1061,6 +853,243 @@
 
 
 
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>export function onSubformChange() {
+  // tableField_xyz子表中的 textField_123 字段将被汇总到主表 textField_abc 字段。
+  sum2Main(this, "tableField_xyz", "textField_123", "textField_abc", "string", { appendMode: true });
+}</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="~resolveFieldMaps">
+        <a class="href-link" href="#~resolveFieldMaps">#</a>
+        
+            
+                <span class='tag'>inner</span>
+            
+        
+        <span class="code-name">
+            
+                resolveFieldMaps<span class="signature">(formData, fieldMaps, mainFormData)</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        处理字段映射，组装并返回新的表单数据对象
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>formData</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">来源表单数据，如果来源为关联表单子表则为子表数据项目</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>fieldMaps</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;<a href="module-Subform.html#~FieldMapItem">module:Subform~FieldMapItem</a>></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">字段映射定义</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>mainFormData</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">主表数据，如果来源是关联表单子表则该字段传主表数据，否则传null</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="subform.js.html" class="button">View Source</a>
+            <span>
+                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line393">line 393</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>新的表单数据对象</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Object</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -1148,7 +1177,7 @@
 
     
 
-    <td class="description last">是否保留非关联表单填充的旧数据</td>
+    <td class="description last">是否保留非关联表单填充的旧数据，默认为true</td>
 </tr>
 
         
@@ -1193,7 +1222,7 @@
         <p class="tag-source">
             <a href="subform.js.html" class="button">View Source</a>
             <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line332">line 332</a>
+                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line381">line 381</a>
             </span>
         </p>
     
@@ -1400,7 +1429,7 @@
         <p class="tag-source">
             <a href="subform.js.html" class="button">View Source</a>
             <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line324">line 324</a>
+                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line373">line 373</a>
             </span>
         </p>
     
@@ -1484,7 +1513,7 @@
 
     
 
-    <td class="description last">是否跳过空数据</td>
+    <td class="description last">是否跳过空数据，默认为true</td>
 </tr>
 
         
@@ -1507,7 +1536,7 @@
 
     
 
-    <td class="description last">是否跳过重复数据</td>
+    <td class="description last">是否跳过重复数据，默认为true</td>
 </tr>
 
         
@@ -1575,7 +1604,7 @@
         <p class="tag-source">
             <a href="subform.js.html" class="button">View Source</a>
             <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line101">line 101</a>
+                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line8">line 8</a>
             </span>
         </p>
     
@@ -1796,7 +1825,7 @@
         <p class="tag-source">
             <a href="subform.js.html" class="button">View Source</a>
             <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line221">line 221</a>
+                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line263">line 263</a>
             </span>
         </p>
     
