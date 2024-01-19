@@ -102,9 +102,6 @@ export function onSubformChange({ extra }) {
   if (extra && extra.from === "form_change") {
     // TODO: 当子表某个字段值变更时执行
 
-    // 获取数据变更行下标
-    // const changeItemIndex = getSubformItemIndex(this, extra.formGroupId, extra.tableFieldId);
-
     if (extra.fieldId === "textField_xxxxxx") {
       // TODO: 匹配特定字段值变更时执行
     }
