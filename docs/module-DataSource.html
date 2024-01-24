@@ -1779,7 +1779,7 @@ saveFormData(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line389">line 389</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line445">line 445</a>
             </span>
         </p>
     
@@ -2111,7 +2111,7 @@ searchFormDataIds(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line494">line 494</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line550">line 550</a>
             </span>
         </p>
     
@@ -2488,7 +2488,7 @@ searchFormDataIdsAll(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line600">line 600</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line656">line 656</a>
             </span>
         </p>
     
@@ -2821,7 +2821,7 @@ searchFormDatas(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line737">line 737</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line793">line 793</a>
             </span>
         </p>
     
@@ -2914,6 +2914,353 @@ searchFormDatasAll(
     console.log(`查询失败：${e.message}`);
   }
 );</code></pre>
+    
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".startInstance">
+        <a class="href-link" href="#.startInstance">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                startInstance<span class="signature">(context, processCode, formUuid, formData, dptId<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        发起流程
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>context</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">this上下文</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>processCode</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">流程 code</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>formUuid</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">表单ID</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>formData</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">表单数据对象</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>dptId</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last">发起部门ID，如不填默认为发起人主事部门</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="data-source.js.html" class="button">View Source</a>
+            <span>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line333">line 333</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'>一个Promise，resolve流程实例ID</div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Promise.&lt;string></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>// 使用前请添加数据源：
+// 名称：startInstance
+// 请求方法：POST
+// 请求地址：/dingtalk/web/APP_xxxxxx/v1/process/startInstance.json
+
+startInstance(
+  this,
+  "TPROC--xxxxxx",
+  "FORM-xxxxxx",
+  { textField_xxxxxx: "hello", numberField_xxxxxx: 100 },
+).then(
+  (instanceId) => {
+    console.log("创建成功，实例ID：${instanceId}");
+  },
+  (e) => {
+    console.log(`创建失败：${e.message}`);
+  }
+)</code></pre>
     
 
 
@@ -3172,7 +3519,7 @@ searchFormDatasAll(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line807">line 807</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line863">line 863</a>
             </span>
         </p>
     
@@ -3425,7 +3772,7 @@ updateFormData(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line322">line 322</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line378">line 378</a>
             </span>
         </p>
     
@@ -3624,7 +3971,7 @@ updateFormData(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line530">line 530</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line586">line 586</a>
             </span>
         </p>
     
@@ -3975,7 +4322,7 @@ updateFormData(
         <p class="tag-source">
             <a href="data-source.js.html" class="button">View Source</a>
             <span>
-                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line303">line 303</a>
+                <a href="data-source.js.html">data-source.js</a>, <a href="data-source.js.html#line359">line 359</a>
             </span>
         </p>
     

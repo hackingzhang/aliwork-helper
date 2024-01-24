@@ -416,6 +416,62 @@ async function saveFormData(context, formUuid, formData) {
 }
 
 /**
+ * 发起流程
+ * @static
+ * @param {Object} context this上下文
+ * @param {string} processCode 流程 code
+ * @param {string} formUuid 表单ID
+ * @param {Object} formData 表单数据对象
+ * @param {string} [dptId] 发起部门ID，如不填默认为发起人主事部门
+ * @returns {Promise&lt;string>} 一个Promise，resolve流程实例ID
+ *
+ * @example
+ * // 使用前请添加数据源：
+ * // 名称：startInstance
+ * // 请求方法：POST
+ * // 请求地址：/dingtalk/web/APP_xxxxxx/v1/process/startInstance.json
+ *
+ * startInstance(
+ *   this,
+ *   "TPROC--xxxxxx",
+ *   "FORM-xxxxxx",
+ *   { textField_xxxxxx: "hello", numberField_xxxxxx: 100 },
+ * ).then(
+ *   (instanceId) => {
+ *     console.log("创建成功，实例ID：${instanceId}");
+ *   },
+ *   (e) => {
+ *     console.log(`创建失败：${e.message}`);
+ *   }
+ * )
+ */
+async function startInstance(context, processCode, formUuid, formData, dptId) {
+  if (!context) {
+    throw Error("context is required");
+  }
+  if (!processCode) {
+    throw Error("processCode is required");
+  }
+  if (!formUuid) {
+    throw Error("formUuid is required");
+  }
+  if (!formData) {
+    formData = {};
+  }
+
+  const formDataJson = JSON.stringify(formData);
+
+  const instanceId = await context.dataSourceMap.startInstance.load({
+    processCode,
+    formUuid,
+    formDataJson,
+    dptId
+  });
+
+  return instanceId;
+}
+
+/**
  * 搜索表单（流程）实例数据（ID）选项
  * @typedef {Object} module:DataSource.SearchFormDatasOption
  * @property {boolean} strictQuery 严格（精确）查询，默认不启用。当使用单行文本或者多行文本组件作为查询条件时执行的是模糊查询，
@@ -959,6 +1015,7 @@ export {
   fetchSubformDatas,
   fetchSubformDatasAll,
   saveFormData,
+  startInstance,
   updateFormData,
   deleteFormData,
 };
