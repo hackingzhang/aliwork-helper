@@ -4,6 +4,7 @@ import {
   isEmpty,
   dateTimeFormat,
   generateRandomId,
+  round,
 } from "../src/utils";
 
 describe("sleep function", () => {
@@ -99,5 +100,17 @@ describe("generateRandomId function", () => {
     expect(id).toHaveLength(32);
     id = generateRandomId(16);
     expect(id).toHaveLength(16);
+  });
+});
+
+describe("round function", () => {
+  test("default digits parameter", () => {
+    const result = round(0.1 + 0.2);
+    expect(result).toBe(0.3);
+  });
+
+  test("rounding to tree decimal places", () => {
+    const result = round(1.23456 * 4.56789, 6);
+    expect(result).toBe(5.639334);
   });
 });

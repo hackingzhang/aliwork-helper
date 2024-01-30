@@ -190,6 +190,26 @@
   }
 
   /**
+   * 四舍五入
+   * @static
+   * @param {number} number 数字
+   * @param {number} digits 要保留的小数位数
+   * @returns {number} 四舍五入后的数字
+   *
+   * @example
+   * 0.1 + 0.2; // 0.30000000000000004
+   * round(0.1 + 0.2); // 0.3
+   * 
+   * 0.123 * 3.4; // 0.41819999999999996
+   * round(0.123 * 3.4); // 0.42
+   * round(0.123 * 3.4, 3); // 0.418
+   */
+  function round(number, digits = 2) {
+    const magic = Math.pow(10, digits);
+    return Math.round(number * magic) / magic;
+  }
+
+  /**
    * 表单/自定义页面字段相关方法
    * @module Field
    */
@@ -2688,6 +2708,7 @@
   exports.loading = loading;
   exports.mergeTo = mergeTo;
   exports.retry = retry;
+  exports.round = round;
   exports.saveFormData = saveFormData;
   exports.searchFormDataIds = searchFormDataIds;
   exports.searchFormDataIdsAll = searchFormDataIdsAll;
