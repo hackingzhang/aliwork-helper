@@ -2,9 +2,6 @@
   "tags": {
     "allowUnknownTags": true
   },
-  "plugins": [
-    "node_modules/better-docs/category"
-  ],
   "source": {
     "include": [
       "src/"
@@ -12,7 +9,7 @@
     "includePattern": ".+\\.js$"
   },
   "opts": {
-    "template": "node_modules/better-docs",
+    "template": "node_modules/docdash",
     "encoding": "utf8",
     "destination": "docs/",
     "readme": "README.md",
@@ -27,23 +24,41 @@
       "staticFiles": {
         "include": []
       }
-    },
-    "better-docs": {
-      "name": "Aliwork helper",
-      "logo": "assets/logo.png",
+    }
+  },
+  "docdash": {
+    "meta": {
       "title": "Aliwork helper",
-      "css": "styles/custom.css",
-      "hideGenerator": false,
-      "navLinks": [
-        {
-          "label": "宜搭开放API",
-          "href": "https://docs.aliwork.com/docs/developer/api/about"
-        },
-        {
-          "label": "Github",
-          "href": "https://github.com/hackingzhang/aliwork-helper"
-        }
-      ]
+      "description": "宜搭前端 JS 工具代码库",
+      "keyword": "Aliwork 宜搭 工具库"
+    },
+    "search": true,
+    "sectionOrder": [
+      "Modules",
+      "Classes",
+      "Externals",
+      "Events",
+      "Namespaces",
+      "Mixins",
+      "Tutorials",
+      "Interfaces"
+    ],
+    "menu": {
+      "Github": {
+        "href": "https://github.com/hackingzhang/aliwork-helper",
+        "target": "_blank",
+        "class": "menu-item"
+      },
+      "Gitee码云": {
+        "href": "https://gitee.com/hexzhangshuai/aliwork-helper",
+        "target": "_blank",
+        "class": "menu-item"
+      },
+      "宜搭开放API": {
+        "href": "https://docs.aliwork.com/docs/developer/api/about",
+        "target": "_blank",
+        "class": "menu-item"
+      }
     }
   }
 }

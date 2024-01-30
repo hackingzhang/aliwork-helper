@@ -1,112 +1,52 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aliwork helper FieldChangeLogger.js</title>
-
-  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./build/entry.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
-  <link type="text/css" rel="stylesheet" href="styles/custom.css">
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-  
+    
+    <meta charset="utf-8">
+    <title>FieldChangeLogger.js - Aliwork helper</title>
+    
+    <meta name="description" content="宜搭前端 JS 工具代码库" />
+    
+        <meta name="keywords" content="Aliwork 宜搭 工具库" />
+        <meta name="keyword" content="Aliwork 宜搭 工具库" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<body>
 
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
+<label for="nav-trigger" class="overlay"></label>
 
-<body class="layout small-header">
-    <div id="stickyNavbarOverlay"></div>
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/hackingzhang/aliwork-helper" target="_blank" class="menu-item" >Github</a></h2><h2><a href="https://gitee.com/hexzhangshuai/aliwork-helper" target="_blank" class="menu-item" >Gitee码云</a></h2><h2><a href="https://docs.aliwork.com/docs/developer/api/about" target="_blank" class="menu-item" >宜搭开放API</a></h2><h3>Modules</h3><ul><li><a href="module-DataLinkage.html">DataLinkage</a><ul class='methods'><li data-type='method'><a href="module-DataLinkage.html#.dataLinkage">dataLinkage</a></li><li data-type='method'><a href="module-DataLinkage.html#.dataLinkageSubform">dataLinkageSubform</a></li><li data-type='method'><a href="module-DataLinkage.html#~resolveConditionMap">resolveConditionMap</a></li></ul></li><li><a href="module-DataSource.html">DataSource</a><ul class='methods'><li data-type='method'><a href="module-DataSource.html#.deleteFormData">deleteFormData</a></li><li data-type='method'><a href="module-DataSource.html#.fetchSubformDatas">fetchSubformDatas</a></li><li data-type='method'><a href="module-DataSource.html#.fetchSubformDatasAll">fetchSubformDatasAll</a></li><li data-type='method'><a href="module-DataSource.html#.getFormData">getFormData</a></li><li data-type='method'><a href="module-DataSource.html#.saveFormData">saveFormData</a></li><li data-type='method'><a href="module-DataSource.html#.searchFormDataIds">searchFormDataIds</a></li><li data-type='method'><a href="module-DataSource.html#.searchFormDataIdsAll">searchFormDataIdsAll</a></li><li data-type='method'><a href="module-DataSource.html#.searchFormDatas">searchFormDatas</a></li><li data-type='method'><a href="module-DataSource.html#.searchFormDatasAll">searchFormDatasAll</a></li><li data-type='method'><a href="module-DataSource.html#.startInstance">startInstance</a></li><li data-type='method'><a href="module-DataSource.html#.updateFormData">updateFormData</a></li></ul></li><li><a href="module-Field.html">Field</a><ul class='methods'><li data-type='method'><a href="module-Field.html#.activateTabItems">activateTabItems</a></li><li data-type='method'><a href="module-Field.html#.fieldToString">fieldToString</a></li><li data-type='method'><a href="module-Field.html#.fieldValueDiff">fieldValueDiff</a></li><li data-type='method'><a href="module-Field.html#.fieldValueEqualSingle">fieldValueEqualSingle</a></li><li data-type='method'><a href="module-Field.html#.generateAssociationFormFieldData">generateAssociationFormFieldData</a></li><li data-type='method'><a href="module-Field.html#.generateDptFieldData">generateDptFieldData</a></li><li data-type='method'><a href="module-Field.html#.generateEmployeeFieldData">generateEmployeeFieldData</a></li><li data-type='method'><a href="module-Field.html#.getFieldDataTypeById">getFieldDataTypeById</a></li><li data-type='method'><a href="module-Field.html#.getFieldTypeById">getFieldTypeById</a></li><li data-type='method'><a href="module-Field.html#.mergeTo">mergeTo</a></li><li data-type='method'><a href="module-Field.html#.syncTo">syncTo</a></li></ul></li><li><a href="module-Subform.html">Subform</a><ul class='methods'><li data-type='method'><a href="module-Subform.html#.associateForm2Subform">associateForm2Subform</a></li><li data-type='method'><a href="module-Subform.html#.sum2Main">sum2Main</a></li><li data-type='method'><a href="module-Subform.html#~resolveFieldMaps">resolveFieldMaps</a></li></ul></li><li><a href="module-UI.html">UI</a><ul class='methods'><li data-type='method'><a href="module-UI.html#.dialog">dialog</a></li><li data-type='method'><a href="module-UI.html#.hijackSubmit">hijackSubmit</a></li><li data-type='method'><a href="module-UI.html#.loading">loading</a></li></ul></li><li><a href="module-Utils.html">Utils</a><ul class='methods'><li data-type='method'><a href="module-Utils.html#.dateTimeFormat">dateTimeFormat</a></li><li data-type='method'><a href="module-Utils.html#.generateRandomId">generateRandomId</a></li><li data-type='method'><a href="module-Utils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="module-Utils.html#.retry">retry</a></li><li data-type='method'><a href="module-Utils.html#.round">round</a></li><li data-type='method'><a href="module-Utils.html#.sleep">sleep</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="FieldChangeLogger.html">FieldChangeLogger</a><ul class='methods'><li data-type='method'><a href="FieldChangeLogger.html#change">change</a></li><li data-type='method'><a href="FieldChangeLogger.html#clear">clear</a></li><li data-type='method'><a href="FieldChangeLogger.html#format">format</a></li></ul></li><li><a href="module-Subform-Subform.html">Subform</a><ul class='methods'><li data-type='method'><a href="module-Subform-Subform.html#getDatas">getDatas</a></li><li data-type='method'><a href="module-Subform-Subform.html#getFormGroupId">getFormGroupId</a></li><li data-type='method'><a href="module-Subform-Subform.html#getIndex">getIndex</a></li><li data-type='method'><a href="module-Subform-Subform.html#getInstance">getInstance</a></li><li data-type='method'><a href="module-Subform-Subform.html#getItems">getItems</a></li><li data-type='method'><a href="module-Subform-Subform.html#setDatas">setDatas</a></li><li data-type='method'><a href="module-Subform-Subform.html#summary">summary</a></li><li data-type='method'><a href="module-Subform-Subform.html#updateItem">updateItem</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">FieldChangeLogger.js</h1>
     
 
-<div class="top-nav">
-    <div class="inner">
-        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-        <div class="logo">
-             
-                <a class="image" href="index.html">
-                    <img src="assets/logo.png" alt="logo">
-                </a>
-            
-             
-                <a href="index.html">
-                    <h1 class="navbar-item">Aliwork helper</h1>
-                </a>
-            
-        </div>
-        <div class="menu">
-            
-            <div class="navigation">
-                <a
-                    href="index.html"
-                    class="link"
-                >
-                    Documentation
-                </a>
-                
-                 
-                    
-                        <a
-                            class="link user-link "
-                            href="https://docs.aliwork.com/docs/developer/api/about"
-                        >
-                            宜搭开放API
-                        </a>
-                    
-                        <a
-                            class="link user-link "
-                            href="https://github.com/hackingzhang/aliwork-helper"
-                        >
-                            Github
-                        </a>
-                    
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-    <div id="main">
-        <div
-            class="sidebar "
-            id="sidebarNav"
-        >
-            
-                <div class="search-wrapper">
-                    <input id="search" type="text" placeholder="Search docs..." class="input">
-                </div>
-            
-            <nav>
-                
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DataLinkage.html">DataLinkage</a></li><li><a href="module-DataSource.html">DataSource</a></li><li><a href="module-Field.html">Field</a></li><li><a href="module-Subform.html">Subform</a></li><li><a href="module-UI.html">UI</a></li><li><a href="module-Utils.html">Utils</a></li></ul><h3>Classes</h3><ul><li><a href="FieldChangeLogger.html">FieldChangeLogger</a></li><li><a href="module-Subform-Subform.html">Subform</a></li></ul></div>
-                
-            </nav>
-        </div>
-        <div class="core" id="main-content-wrapper">
-            <div class="content">
-                <header class="page-title">
-                    <p>Source</p>
-                    <h1>FieldChangeLogger.js</h1>
-                </header>
-                
+    
 
 
 
@@ -195,27 +135,22 @@ export default FieldChangeLogger;
 
 
 
-            </div>
-            
-            <footer class="footer">
-                <div class="content has-text-centered">
-                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
-                    <p class="sidebar-created-by">
-                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
-                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
-                    </p>
-                </div>
-            </footer>
-            
-        </div>
-        <div id="side-nav" class="side-nav">
-        </div>
-    </div>
-<script src="scripts/app.min.js"></script>
-<script>PR.prettyPrint();</script>
-<script src="scripts/linenumber.js"> </script>
+    
+    
+</div>
 
-<script src="scripts/search.js"> </script>
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue Jan 30 2024 19:03:26 GMT+0800 (China Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
 
 
 </body>

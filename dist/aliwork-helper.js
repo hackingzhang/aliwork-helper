@@ -2496,7 +2496,7 @@
 
   /**
    * 数据联动 <br/>
-   * 本方法仅支持带数据到主表，要数据联动到子表，请使用{@link module:DataLinkage~dataLinkageSubform}
+   * 本方法仅支持带数据到主表，要数据联动到子表，请使用{@link module:DataLinkage.dataLinkageSubform}
    * @static
    * @param {Object} context this上下文
    * @param {"form" | "process"} targetFormType 目标表单类型，form表示普通表单，process表示流程

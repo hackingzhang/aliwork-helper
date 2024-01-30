@@ -1,110 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aliwork helper Subform</title>
-
-  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="./build/entry.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
-  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
-  <link type="text/css" rel="stylesheet" href="styles/custom.css">
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-  
+    
+    <meta charset="utf-8">
+    <title>Subform - Aliwork helper</title>
+    
+    <meta name="description" content="宜搭前端 JS 工具代码库" />
+    
+        <meta name="keywords" content="Aliwork 宜搭 工具库" />
+        <meta name="keyword" content="Aliwork 宜搭 工具库" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<body>
 
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
+<label for="nav-trigger" class="overlay"></label>
 
-<body class="layout small-header">
-    <div id="stickyNavbarOverlay"></div>
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/hackingzhang/aliwork-helper" target="_blank" class="menu-item" >Github</a></h2><h2><a href="https://gitee.com/hexzhangshuai/aliwork-helper" target="_blank" class="menu-item" >Gitee码云</a></h2><h2><a href="https://docs.aliwork.com/docs/developer/api/about" target="_blank" class="menu-item" >宜搭开放API</a></h2><h3>Modules</h3><ul><li><a href="module-DataLinkage.html">DataLinkage</a><ul class='methods'><li data-type='method'><a href="module-DataLinkage.html#.dataLinkage">dataLinkage</a></li><li data-type='method'><a href="module-DataLinkage.html#.dataLinkageSubform">dataLinkageSubform</a></li><li data-type='method'><a href="module-DataLinkage.html#~resolveConditionMap">resolveConditionMap</a></li></ul></li><li><a href="module-DataSource.html">DataSource</a><ul class='methods'><li data-type='method'><a href="module-DataSource.html#.deleteFormData">deleteFormData</a></li><li data-type='method'><a href="module-DataSource.html#.fetchSubformDatas">fetchSubformDatas</a></li><li data-type='method'><a href="module-DataSource.html#.fetchSubformDatasAll">fetchSubformDatasAll</a></li><li data-type='method'><a href="module-DataSource.html#.getFormData">getFormData</a></li><li data-type='method'><a href="module-DataSource.html#.saveFormData">saveFormData</a></li><li data-type='method'><a href="module-DataSource.html#.searchFormDataIds">searchFormDataIds</a></li><li data-type='method'><a href="module-DataSource.html#.searchFormDataIdsAll">searchFormDataIdsAll</a></li><li data-type='method'><a href="module-DataSource.html#.searchFormDatas">searchFormDatas</a></li><li data-type='method'><a href="module-DataSource.html#.searchFormDatasAll">searchFormDatasAll</a></li><li data-type='method'><a href="module-DataSource.html#.startInstance">startInstance</a></li><li data-type='method'><a href="module-DataSource.html#.updateFormData">updateFormData</a></li></ul></li><li><a href="module-Field.html">Field</a><ul class='methods'><li data-type='method'><a href="module-Field.html#.activateTabItems">activateTabItems</a></li><li data-type='method'><a href="module-Field.html#.fieldToString">fieldToString</a></li><li data-type='method'><a href="module-Field.html#.fieldValueDiff">fieldValueDiff</a></li><li data-type='method'><a href="module-Field.html#.fieldValueEqualSingle">fieldValueEqualSingle</a></li><li data-type='method'><a href="module-Field.html#.generateAssociationFormFieldData">generateAssociationFormFieldData</a></li><li data-type='method'><a href="module-Field.html#.generateDptFieldData">generateDptFieldData</a></li><li data-type='method'><a href="module-Field.html#.generateEmployeeFieldData">generateEmployeeFieldData</a></li><li data-type='method'><a href="module-Field.html#.getFieldDataTypeById">getFieldDataTypeById</a></li><li data-type='method'><a href="module-Field.html#.getFieldTypeById">getFieldTypeById</a></li><li data-type='method'><a href="module-Field.html#.mergeTo">mergeTo</a></li><li data-type='method'><a href="module-Field.html#.syncTo">syncTo</a></li></ul></li><li><a href="module-Subform.html">Subform</a><ul class='methods'><li data-type='method'><a href="module-Subform.html#.associateForm2Subform">associateForm2Subform</a></li><li data-type='method'><a href="module-Subform.html#.sum2Main">sum2Main</a></li><li data-type='method'><a href="module-Subform.html#~resolveFieldMaps">resolveFieldMaps</a></li></ul></li><li><a href="module-UI.html">UI</a><ul class='methods'><li data-type='method'><a href="module-UI.html#.dialog">dialog</a></li><li data-type='method'><a href="module-UI.html#.hijackSubmit">hijackSubmit</a></li><li data-type='method'><a href="module-UI.html#.loading">loading</a></li></ul></li><li><a href="module-Utils.html">Utils</a><ul class='methods'><li data-type='method'><a href="module-Utils.html#.dateTimeFormat">dateTimeFormat</a></li><li data-type='method'><a href="module-Utils.html#.generateRandomId">generateRandomId</a></li><li data-type='method'><a href="module-Utils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="module-Utils.html#.retry">retry</a></li><li data-type='method'><a href="module-Utils.html#.round">round</a></li><li data-type='method'><a href="module-Utils.html#.sleep">sleep</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="FieldChangeLogger.html">FieldChangeLogger</a><ul class='methods'><li data-type='method'><a href="FieldChangeLogger.html#change">change</a></li><li data-type='method'><a href="FieldChangeLogger.html#clear">clear</a></li><li data-type='method'><a href="FieldChangeLogger.html#format">format</a></li></ul></li><li><a href="module-Subform-Subform.html">Subform</a><ul class='methods'><li data-type='method'><a href="module-Subform-Subform.html#getDatas">getDatas</a></li><li data-type='method'><a href="module-Subform-Subform.html#getFormGroupId">getFormGroupId</a></li><li data-type='method'><a href="module-Subform-Subform.html#getIndex">getIndex</a></li><li data-type='method'><a href="module-Subform-Subform.html#getInstance">getInstance</a></li><li data-type='method'><a href="module-Subform-Subform.html#getItems">getItems</a></li><li data-type='method'><a href="module-Subform-Subform.html#setDatas">setDatas</a></li><li data-type='method'><a href="module-Subform-Subform.html#summary">summary</a></li><li data-type='method'><a href="module-Subform-Subform.html#updateItem">updateItem</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Subform</h1>
     
 
-<div class="top-nav">
-    <div class="inner">
-        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-        <div class="logo">
-             
-                <a class="image" href="index.html">
-                    <img src="assets/logo.png" alt="logo">
-                </a>
-            
-             
-                <a href="index.html">
-                    <h1 class="navbar-item">Aliwork helper</h1>
-                </a>
-            
-        </div>
-        <div class="menu">
-            
-            <div class="navigation">
-                <a
-                    href="index.html"
-                    class="link"
-                >
-                    Documentation
-                </a>
-                
-                 
-                    
-                        <a
-                            class="link user-link "
-                            href="https://docs.aliwork.com/docs/developer/api/about"
-                        >
-                            宜搭开放API
-                        </a>
-                    
-                        <a
-                            class="link user-link "
-                            href="https://github.com/hackingzhang/aliwork-helper"
-                        >
-                            Github
-                        </a>
-                    
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-    <div id="main">
-        <div
-            class="sidebar "
-            id="sidebarNav"
-        >
-            
-                <div class="search-wrapper">
-                    <input id="search" type="text" placeholder="Search docs..." class="input">
-                </div>
-            
-            <nav>
-                
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-DataLinkage.html">DataLinkage</a></li><li><a href="module-DataSource.html">DataSource</a></li><li><a href="module-Field.html">Field</a></li><li><a href="module-Subform.html">Subform</a></li><li><a href="module-UI.html">UI</a></li><li><a href="module-Utils.html">Utils</a></li></ul><h3>Classes</h3><ul><li><a href="FieldChangeLogger.html">FieldChangeLogger</a></li><li><a href="module-Subform-Subform.html">Subform</a></li></ul></div>
-                
-            </nav>
-        </div>
-        <div class="core" id="main-content-wrapper">
-            <div class="content">
-                <header class="page-title">
-                    <p>Module</p>
-                    <h1>Subform</h1>
-                </header>
-                
+    
 
 
 
@@ -116,16 +58,23 @@
 </header>
 
 <article>
-    <div class="container-overview">
     
+        <div class="container-overview">
         
-            <div class="description">子表单相关工具方法</div>
-        
-
-        
-
+            
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>子表单相关工具方法</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
     
 
@@ -150,27 +99,26 @@
     
 
     
-    
 
     
 
     
 
-    
-        <p class="tag-source">
-            <a href="subform.js.html" class="button">View Source</a>
-            <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line1">line 1</a>
-            </span>
-        </p>
     
 </dl>
 
 
+
+
+            
+                <div class="description usertext">子表单相关工具方法</div>
+            
+
+            
         
+        </div>
     
-    </div>
-    
+
     
 
     
@@ -183,315 +131,42 @@
             <dd></dd>
         </dl>
     
+    
+    
+
+     
 
     
 
     
 
     
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
 
     
 
-    
-        <div class='vertical-section'>
-            <h1>Methods</h1>
-            <div class="members">
-            
-                <div class="member">
-
+    <h4 class="name" id=".associateForm2Subform"><span class="type-signature type-signature-async, static">(async, static) </span>associateForm2Subform<span class="signature">(context, formType, assocaiteFieldId, localSubformId, formInstIdField, fieldMaps, isDataFromSubform, remoteSubformId, options)</span><span class="type-signature"></span></h4>
 
     
-    <h4 class="name" id=".associateForm2Subform">
-        <a class="href-link" href="#.associateForm2Subform">#</a>
-        
-            
-                <span class='tag'>async</span>
-            
-                <span class='tag'>static</span>
-            
-        
-        <span class="code-name">
-            
-                associateForm2Subform<span class="signature">(context, formType, assocaiteFieldId, localSubformId, formInstIdField, fieldMaps, isDataFromSubform, remoteSubformId, options)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        将关联表单的数据填充到本表单的子表上
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>context</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">object</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">this上下文</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>formType</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">"form"</code>
-|
-
-<code class="param-type">"process"</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">表单类型</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>assocaiteFieldId</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">string</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">关联表单组件唯一标识</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>localSubformId</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">string</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">本表单子表唯一标识</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>formInstIdField</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">string</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">子表中用于存储关联表单实例Id的字段，用于判断子表数据应该删除还是新增</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>fieldMaps</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">Array.&lt;<a href="module-Subform.html#~FieldMapItem">module:Subform~FieldMapItem</a>></code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">字段填充映射</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>isDataFromSubform</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">boolean</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">填充数据是否来自关联表单的子表</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>remoteSubformId</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">string</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">关联表单子表ID</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>options</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type"><a href="module-Subform.html#~AF2SubformOption">module:Subform~AF2SubformOption</a></code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">扩展配置</td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
 
 
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>将关联表单的数据填充到本表单的子表上</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line484">line 484</a>
+    </li></ul></dd>
+    
 
     
 
@@ -516,19 +191,11 @@
     
 
     
-    
 
     
 
     
 
-    
-        <p class="tag-source">
-            <a href="subform.js.html" class="button">View Source</a>
-            <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line484">line 484</a>
-            </span>
-        </p>
     
 </dl>
 
@@ -542,20 +209,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
+    <h5 class="h5-examples">Example</h5>
     
-    
-        <pre class="prettyprint"><code>export function onAssocciateFormChange() {
+    <pre class="prettyprint"><code>export function onAssocciateFormChange() {
   // 将关联表单对应的表单值填充到本表单子表中
   associateForm2Subform(
     this,
@@ -568,235 +224,296 @@
     { keepOldData: true }
   );
 }</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id=".sum2Main">
-        <a class="href-link" href="#.sum2Main">#</a>
+<table class="params">
+    <thead>
+    <tr>
         
-            
-                <span class='tag'>static</span>
-            
+        <th>Name</th>
         
-        <span class="code-name">
-            
-                sum2Main<span class="signature">(context, tableFieldId, fieldInSubform, fieldInMainform, dataType, option)</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
-    
-    
-    <div class="description">
-        子表字段汇总到主表
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
         <tr>
             
-            <th>Name</th>
+                <td class="name"><code>context</code></td>
             
 
-            <th>Type</th>
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
 
             
 
             
 
-            <th class="last">Description</th>
+            <td class="description last">this上下文</td>
         </tr>
-        </thead>
 
-        <tbody>
-        
+    
 
+        <tr>
             
-<tr class="deep-level-0">
-  
-      <td class="name"><code>context</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">Object</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">this上下文</td>
-</tr>
-
-
-        
-
+                <td class="name"><code>formType</code></td>
             
-<tr class="deep-level-0">
-  
-      <td class="name"><code>tableFieldId</code></td>
-  
 
-  <td class="type">
-  
-      
-<code class="param-type">string</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">子表唯一标识</td>
-</tr>
-
-
-        
-
+            <td class="type">
             
-<tr class="deep-level-0">
-  
-      <td class="name"><code>fieldInSubform</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">string</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">要汇总到主表的子表字段</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>fieldInMainform</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">string</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">要汇总到的主表字段</td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>dataType</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">"string"</code>
+                
+<span class="param-type">"form"</span>
 |
 
-<code class="param-type">"number"</code>
-|
-
-<code class="param-type">"dpt"</code>
-|
-
-<code class="param-type">"employee"</code>
+<span class="param-type">"process"</span>
 
 
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">字段数据类型，默认为string类型</td>
-</tr>
-
-
-        
 
             
-<tr class="deep-level-0">
-  
-      <td class="name"><code>option</code></td>
-  
+            </td>
 
-  <td class="type">
-  
-      
-<code class="param-type"><a href="module-Subform.html#~SumOption">module:Subform~SumOption</a></code>
+            
+
+            
+
+            <td class="description last">表单类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>assocaiteFieldId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
 
-  
-  </td>
 
-  
+            
+            </td>
 
-  
+            
 
-  <td class="description last">扩展选项</td>
-</tr>
+            
+
+            <td class="description last">关联表单组件唯一标识</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>localSubformId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">本表单子表唯一标识</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>formInstIdField</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">子表中用于存储关联表单实例Id的字段，用于判断子表数据应该删除还是新增</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fieldMaps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="module-Subform.html#~FieldMapItem">module:Subform~FieldMapItem</a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">字段填充映射</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isDataFromSubform</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">填充数据是否来自关联表单的子表</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>remoteSubformId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">关联表单子表ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Subform.html#~AF2SubformOption">module:Subform~AF2SubformOption</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">扩展配置</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         
-        </tbody>
-    </table>
-</div>
+            
 
+    
+
+    <h4 class="name" id=".sum2Main"><span class="type-signature type-signature-static">(static) </span>sum2Main<span class="signature">(context, tableFieldId, fieldInSubform, fieldInMainform, dataType, option)</span><span class="type-signature"></span></h4>
+
+    
 
 
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>子表字段汇总到主表</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line290">line 290</a>
+    </li></ul></dd>
+    
 
     
 
@@ -821,19 +538,11 @@
     
 
     
-    
 
     
 
     
 
-    
-        <p class="tag-source">
-            <a href="subform.js.html" class="button">View Source</a>
-            <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line290">line 290</a>
-            </span>
-        </p>
     
 </dl>
 
@@ -847,168 +556,236 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
+    <h5 class="h5-examples">Example</h5>
     
-    
-        <pre class="prettyprint"><code>export function onSubformChange() {
+    <pre class="prettyprint"><code>export function onSubformChange() {
   // tableField_xyz子表中的 textField_123 字段将被汇总到主表 textField_abc 字段。
   sum2Main(this, "tableField_xyz", "textField_123", "textField_abc", "string", { appendMode: true });
 }</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
     
 
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="~resolveFieldMaps">
-        <a class="href-link" href="#~resolveFieldMaps">#</a>
+<table class="params">
+    <thead>
+    <tr>
         
-            
-                <span class='tag'>inner</span>
-            
+        <th>Name</th>
         
-        <span class="code-name">
-            
-                resolveFieldMaps<span class="signature">(formData, fieldMaps, mainFormData)</span><span class="type-signature"> &rarr; {Object}</span>
-            
-        </span>
-    </h4>
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
-    
-    
-    <div class="description">
-        处理字段映射，组装并返回新的表单数据对象
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
         <tr>
             
-            <th>Name</th>
+                <td class="name"><code>context</code></td>
             
 
-            <th>Type</th>
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
 
             
 
             
 
-            <th class="last">Description</th>
+            <td class="description last">this上下文</td>
         </tr>
-        </thead>
 
-        <tbody>
-        
+    
+
+        <tr>
+            
+                <td class="name"><code>tableFieldId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
 
             
-<tr class="deep-level-0">
-  
-      <td class="name"><code>formData</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">Object</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">来源表单数据，如果来源为关联表单子表则为子表数据项目</td>
-</tr>
-
-
-        
+            </td>
 
             
-<tr class="deep-level-0">
-  
-      <td class="name"><code>fieldMaps</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">Array.&lt;<a href="module-Subform.html#~FieldMapItem">module:Subform~FieldMapItem</a>></code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last">字段映射定义</td>
-</tr>
-
-
-        
 
             
-<tr class="deep-level-0">
-  
-      <td class="name"><code>mainFormData</code></td>
-  
 
-  <td class="type">
-  
-      
-<code class="param-type">Object</code>
+            <td class="description last">子表唯一标识</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fieldInSubform</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
 
-  
-  </td>
 
-  
+            
+            </td>
 
-  
+            
 
-  <td class="description last">主表数据，如果来源是关联表单子表则该字段传主表数据，否则传null</td>
-</tr>
+            
+
+            <td class="description last">要汇总到主表的子表字段</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fieldInMainform</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">要汇总到的主表字段</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dataType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">"string"</span>
+|
+
+<span class="param-type">"number"</span>
+|
+
+<span class="param-type">"dpt"</span>
+|
+
+<span class="param-type">"employee"</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">字段数据类型，默认为string类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>option</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Subform.html#~SumOption">module:Subform~SumOption</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">扩展选项</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         
-        </tbody>
-    </table>
-</div>
+            
 
+    
+
+    <h4 class="name" id="~resolveFieldMaps"><span class="type-signature type-signature-inner">(inner) </span>resolveFieldMaps<span class="signature">(formData, fieldMaps, mainFormData)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
 
 
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>处理字段映射，组装并返回新的表单数据对象</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line398">line 398</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1033,19 +810,11 @@
     
 
     
-    
 
     
 
     
 
-    
-        <p class="tag-source">
-            <a href="subform.js.html" class="button">View Source</a>
-            <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line398">line 398</a>
-            </span>
-        </p>
     
 </dl>
 
@@ -1061,133 +830,301 @@
 
 
 
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
+    <h5 class="h5-parameters">Parameters:</h5>
     
-    <div class='param-desc column is-7'>新的表单数据对象</div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
+
+<table class="params">
+    <thead>
+    <tr>
         
-<code class="param-type">Object</code>
+        <th>Name</th>
+        
 
+        <th>Type</th>
 
-    </div>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
-</div>
 
+        <tr>
+            
+                <td class="name"><code>formData</code></td>
+            
+
+            <td class="type">
+            
                 
-        </div>
-    </div>
+<span class="param-type">Object</span>
 
 
 
-
-</div>
             
-            </div>
-        </div>
+            </td>
+
+            
+
+            
+
+            <td class="description last">来源表单数据，如果来源为关联表单子表则为子表数据项目</td>
+        </tr>
+
     
 
-    
-        <div class='vertical-section'>
-            <h1>Type Definitions</h1>
-            <div class="members">
+        <tr>
             
-                <div class="member">
+                <td class="name"><code>fieldMaps</code></td>
+            
 
-    <span class="method-parameter is-pulled-right">
-        <label>Type:</label>
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="module-Subform.html#~FieldMapItem">module:Subform~FieldMapItem</a>></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">字段映射定义</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mainFormData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">主表数据，如果来源是关联表单子表则该字段传主表数据，否则传null</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
         
-<code class="param-type">Object</code>
+<div class="param-desc">
+    新的表单数据对象
+</div>
 
 
-    </span>
 
-<h4 class="name" id="~AF2SubformOption">
-    <a class="href-link" href="#~AF2SubformOption">#</a>
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
     
-    <span class="code-name">
-        AF2SubformOption
-    </span>
+
+
+
+        
     
-</h4>
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id="~AF2SubformOption">AF2SubformOption</h4>
 
 
 
 
-<div class="description">
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>AF2SubformOption 配置类型定义</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line386">line 386</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keepOldData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">是否保留非关联表单填充的旧数据，默认为true</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description usertext">
     AF2SubformOption 配置类型定义
 </div>
 
 
 
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-<div class="table-container">
-    <table class="props table">
-        <thead>
-        <tr>
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
             
-            <th>Name</th>
+<span class="param-type">Object</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
             
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>keepOldData</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">string</code>
+                
+<h4 class="name" id="~FieldMapItem">FieldMapItem</h4>
 
 
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">是否保留非关联表单填充的旧数据，默认为true</td>
-</tr>
-
-        
-        </tbody>
-    </table>
-</div>
 
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>FieldMap配置类型定义</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line378">line 378</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1212,189 +1149,194 @@
     
 
     
-    
 
     
 
     
 
-    
-        <p class="tag-source">
-            <a href="subform.js.html" class="button">View Source</a>
-            <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line386">line 386</a>
-            </span>
-        </p>
     
 </dl>
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
 
+    
 
-</div>
-            
-                <div class="member">
-
-    <span class="method-parameter is-pulled-right">
-        <label>Type:</label>
+<table class="props">
+    <thead>
+    <tr>
         
-<code class="param-type">Object</code>
+        <th>Name</th>
+        
 
+        <th>Type</th>
 
-    </span>
+        
 
-<h4 class="name" id="~FieldMapItem">
-    <a class="href-link" href="#~FieldMapItem">#</a>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
-    <span class="code-name">
-        FieldMapItem
-    </span>
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">源字段</td>
+        </tr>
+
     
-</h4>
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">填充字段</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">"string"</span>
+|
+
+<span class="param-type">"number"</span>
+|
+
+<span class="param-type">"employee"</span>
+|
+
+<span class="param-type">"dpt"</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">字段数据类型</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>multiSelect</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">是否多选字段，type为employee时有用</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
 
-<div class="description">
+
+
+<div class="description usertext">
     FieldMap配置类型定义
 </div>
 
 
 
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-<div class="table-container">
-    <table class="props table">
-        <thead>
-        <tr>
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
             
-            <th>Name</th>
+<span class="param-type">Object</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
             
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>from</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">string</code>
+                
+<h4 class="name" id="~SubformSummaryOption">SubformSummaryOption</h4>
 
 
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">源字段</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>to</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">string</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">填充字段</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>type</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">"string"</code>
-|
-
-<code class="param-type">"number"</code>
-|
-
-<code class="param-type">"employee"</code>
-|
-
-<code class="param-type">"dpt"</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">字段数据类型</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>multiSelect</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">boolean</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">是否多选字段，type为employee时有用</td>
-</tr>
-
-        
-        </tbody>
-    </table>
-</div>
 
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>summary 方法 option 参数类型定义</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1419,157 +1361,161 @@
     
 
     
-    
 
     
 
     
 
-    
-        <p class="tag-source">
-            <a href="subform.js.html" class="button">View Source</a>
-            <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line378">line 378</a>
-            </span>
-        </p>
     
 </dl>
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
 
+    
 
-</div>
-            
-                <div class="member">
-
-    <span class="method-parameter is-pulled-right">
-        <label>Type:</label>
+<table class="props">
+    <thead>
+    <tr>
         
-<code class="param-type">Object</code>
+        <th>Name</th>
+        
 
+        <th>Type</th>
 
-    </span>
+        
 
-<h4 class="name" id="~SubformSummaryOption">
-    <a class="href-link" href="#~SubformSummaryOption">#</a>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
-    <span class="code-name">
-        SubformSummaryOption
-    </span>
+
+        <tr>
+            
+                <td class="name"><code>ignoreEmpty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">是否跳过空数据，默认为true</td>
+        </tr>
+
     
-</h4>
+
+        <tr>
+            
+                <td class="name"><code>ignoreDuplicate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">是否跳过重复数据，默认为true</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">一个数据过滤函数，接受子表行数据作为参数，返回falsy值跳过当前行</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
 
-<div class="description">
+
+
+<div class="description usertext">
     summary 方法 option 参数类型定义
 </div>
 
 
 
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-<div class="table-container">
-    <table class="props table">
-        <thead>
-        <tr>
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
             
-            <th>Name</th>
+<span class="param-type">Object</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
             
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>ignoreEmpty</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">boolean</code>
+                
+<h4 class="name" id="~SumOption">SumOption</h4>
 
 
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">是否跳过空数据，默认为true</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>ignoreDuplicate</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">boolean</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">是否跳过重复数据，默认为true</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>filter</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">function</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">一个数据过滤函数，接受子表行数据作为参数，返回falsy值跳过当前行</td>
-</tr>
-
-        
-        </tbody>
-    </table>
-</div>
 
 
 
 <dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>sum2Main option 参数类型定义</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line264">line 264</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1594,274 +1540,214 @@
     
 
     
-    
 
     
 
     
 
-    
-        <p class="tag-source">
-            <a href="subform.js.html" class="button">View Source</a>
-            <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line9">line 9</a>
-            </span>
-        </p>
     
 </dl>
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
 
+    
 
-</div>
-            
-                <div class="member">
-
-    <span class="method-parameter is-pulled-right">
-        <label>Type:</label>
+<table class="props">
+    <thead>
+    <tr>
         
-<code class="param-type">Object</code>
+        <th>Name</th>
+        
 
+        <th>Type</th>
 
-    </span>
+        
 
-<h4 class="name" id="~SumOption">
-    <a class="href-link" href="#~SumOption">#</a>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
-    <span class="code-name">
-        SumOption
-    </span>
+
+        <tr>
+            
+                <td class="name"><code>ignoreEmpty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">是否跳过空数据，默认为true</td>
+        </tr>
+
     
-</h4>
+
+        <tr>
+            
+                <td class="name"><code>ignoreDuplicate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">是否跳过重复数据，默认为true</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>appendMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">追加模式，数据追加到主表字段上，而不是覆盖，默认为false</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">一个数据过滤函数，接受子表行数据作为参数，返回falsy值跳过当前行</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>separator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">当数据类型为string时的分隔符，默认为半角逗号","</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>decimalPlaces</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">当数据类型为number时，结果四舍五入到几位小数，默认不做舍入，可能存在浮点数精度问题</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
 
-<div class="description">
+
+
+<div class="description usertext">
     sum2Main option 参数类型定义
 </div>
 
 
 
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-<div class="table-container">
-    <table class="props table">
-        <thead>
-        <tr>
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
             
-            <th>Name</th>
+<span class="param-type">Object</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
             
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>ignoreEmpty</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">boolean</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">是否跳过空数据，默认为true</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>ignoreDuplicate</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">boolean</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">是否跳过重复数据，默认为true</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>appendMode</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">boolean</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">追加模式，数据追加到主表字段上，而不是覆盖，默认为false</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>filter</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">function</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">一个数据过滤函数，接受子表行数据作为参数，返回falsy值跳过当前行</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>separator</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">string</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">当数据类型为string时的分隔符，默认为半角逗号","</td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>decimalPlaces</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">number</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last">当数据类型为number时，结果四舍五入到几位小数，默认不做舍入，可能存在浮点数精度问题</td>
-</tr>
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="subform.js.html" class="button">View Source</a>
-            <span>
-                <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line264">line 264</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
-            
-            </div>
-        </div>
     
 
     
@@ -1872,27 +1758,22 @@
 
 
 
-            </div>
-            
-            <footer class="footer">
-                <div class="content has-text-centered">
-                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
-                    <p class="sidebar-created-by">
-                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
-                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
-                    </p>
-                </div>
-            </footer>
-            
-        </div>
-        <div id="side-nav" class="side-nav">
-        </div>
-    </div>
-<script src="scripts/app.min.js"></script>
-<script>PR.prettyPrint();</script>
-<script src="scripts/linenumber.js"> </script>
+    
+    
+</div>
 
-<script src="scripts/search.js"> </script>
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue Jan 30 2024 19:03:26 GMT+0800 (China Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
 
 
 </body>
