@@ -119,6 +119,7 @@
  */
 
 import { getFormData } from "./data-source";
+import { round } from "./utils";
 
 /**
  * summary 方法 option 参数类型定义
@@ -383,6 +384,7 @@ class Subform {
  * @property {boolean} appendMode 追加模式，数据追加到主表字段上，而不是覆盖，默认为false
  * @property {Function} filter 一个数据过滤函数，接受子表行数据作为参数，返回falsy值跳过当前行
  * @property {string} separator 当数据类型为string时的分隔符，默认为半角逗号","
+ * @property {number} decimalPlaces 当数据类型为number时，结果四舍五入到几位小数，默认不做舍入，可能存在浮点数精度问题
  */
 /**
  * 子表字段汇总到主表
@@ -481,6 +483,9 @@ function sum2Main(
     sumData = sumData.join(option.separator);
   } else if (dataType === "number") {
     sumData = sumData.reduce((sum, current) => sum + current, 0);
+    if (typeof option.decimalPlaces === "number") {
+      sumData = round(sumData, option.decimalPlaces);
+    }
   }
   context.$(fieldInMainform).setValue(sumData);
 }
@@ -575,18 +580,18 @@ function resolveFieldMaps(
  * @param {boolean} isDataFromSubform 填充数据是否来自关联表单的子表
  * @param {string} remoteSubformId 关联表单子表ID
  * @param {module:Subform~AF2SubformOption} options 扩展配置
- * 
+ *
  * @example
  * export function onAssocciateFormChange() {
  *   // 将关联表单对应的表单值填充到本表单子表中
  *   associateForm2Subform(
- *     this, 
- *     "form", 
- *     "associationFormField_lrimaemr", 
- *     "tableField_xxxxxx", 
- *     "textField_xxxxxx", 
- *     [{from: "textField_xxxxxx", to: "textField_xxxxxx", type: "string" }], 
- *     false, 
+ *     this,
+ *     "form",
+ *     "associationFormField_lrimaemr",
+ *     "tableField_xxxxxx",
+ *     "textField_xxxxxx",
+ *     [{from: "textField_xxxxxx", to: "textField_xxxxxx", type: "string" }],
+ *     false,
  *     { keepOldData: true }
  *   );
  * }
