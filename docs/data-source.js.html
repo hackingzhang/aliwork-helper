@@ -405,15 +405,31 @@ async function startInstance(context, processCode, formUuid, formData, dptId) {
     processCode,
     formUuid,
     formDataJson,
-    dptId
+    dptId,
   });
 
   return instanceId;
 }
 
 /**
+ * 流程实例状态&lt;br/>
+ * RUNNING - 运行中&lt;br/>
+ * TERMINATED - 已终止&lt;br/>
+ * COMPLETED - 已完成&lt;br/>
+ * ERROR - 异常
+ * @typedef {"RUNNING" | "TERMINATED" | "COMPLETED" | "ERROR"} ProcessStatus
+ */
+
+/**
+ * 流程审批结果&lt;br/>
+ * agree - 同意&lt;br/>
+ * disagree - 不同意
+ * @typedef {"agree" | "disagree"} ApprovedResult
+ */
+
+/**
  * 搜索表单（流程）实例数据（ID）选项
- * @typedef {Object} module:DataSource.SearchFormDatasOption
+ * @typedef {Object} SearchFormDatasOption
  * @property {boolean} strictQuery 严格（精确）查询，默认不启用。当使用单行文本或者多行文本组件作为查询条件时执行的是模糊查询，
  * 比如查询"张三"会把“张三丰”也查询出来。将strictQuery设置为ture会对查询结果执行进一步筛选，保证返回文本严格相等的数据。&lt;br/>
  * ⚠️查询表单实例ID方法{@link module:DataSource.searchFormDataIds} {@link module:DataSource.searchFormDataIdsAll}不支持此选项。&lt;br/>
@@ -425,9 +441,9 @@ async function startInstance(context, processCode, formUuid, formData, dptId) {
  * @property {string} modifiedFrom 查询在该时间段有修改的数据列表
  * @property {string} modifiedTo 查询在该时间段有修改的数据列表
  * @property {string} taskId 任务ID，仅查询流程表单有效
- * @property {"RUNNING" | "TERMINATED" | "COMPLETED" | "ERROR"} instanceStatus
+ * @property {module:DataSource~ProcessStatus} instanceStatus
  * 实例状态，仅查询流程表单有效,可选值为：RUNNING, TERMINATED, COMPLETED, ERROR。分别代表：运行中，已终止，已完成，异常。
- * @property {"agree" | "disagree"} approvedResult 流程审批结果，仅查询流程表单有效
+ * @property {module:DataSource~ApprovedResult} approvedResult 流程审批结果，仅查询流程表单有效，可选值为agree、disagree，分别代表同意、不同意。
  */
 
 /**
@@ -448,7 +464,7 @@ async function startInstance(context, processCode, formUuid, formData, dptId) {
  * @param {Object} searchFieldObject 表单组件查询条件对象
  * @param {number} currentPage 当前页， 默认为1
  * @param {number} pageSize 每页记录数， 默认为10
- * @param {module:DataSource.SearchFormDatasOption} options 查询选项
+ * @param {module:DataSource~SearchFormDatasOption} options 查询选项
  * @returns {Promise&lt;module:DataSource.FormDataIdsResponse>}
  * 一个Promise，resolve表单实例ID响应对象 {@link module:DataSource.FormDataIdsResponse}
  *
@@ -560,7 +576,7 @@ async function searchFormDataIds(
  * @param {"form" | "process"} type 表单类型，可选 form、process，分别代表普通表单和流程
  * @param {string} formUuid 表单ID
  * @param {Object} searchFieldObject 表单组件查询条件对象
- * @param {module:DataSource.SearchFormDatasOption} options 查询选项
+ * @param {module:DataSource~SearchFormDatasOption} options 查询选项
  * @returns {Promise&lt;Array&lt;string>>} 一个Promise，resolve表单实例ID数组
  *
  * @example
@@ -639,13 +655,33 @@ async function searchFormDataIdsAll(
 }
 
 /**
+ * 表单实例数据对象
+ * @typedef {Object.&lt;string, *>} FormData
+ * @property {string} title 数据标题
+ * @property {string} formUuid 表单formUuid
+ * @property {string} instanceId 实例ID
+ * @property {string} processCode 流程码（🚨仅流程包含该字段）
+ * @property {module:DataSource~ProcessStatus} instanceStatus 
+ * 流程状态（🚨仅流程包含该字段），可能值为：RUNNING, TERMINATED, COMPLETED, ERROR。分别代表：运行中，已终止，已完成，异常。
+ * @property {module:DataSource~ApprovedResult} approvedResult 审批结果（🚨仅流程包含该字段）
+ * @property {string} creator 创建人ID（🚨仅表单包含该字段）
+ * @property {Object} originator 发起人对象
+ * @property {string} originatorCorpId 发起人企业ID
+ * @property {string} originatorCorpName 发起人企业名称
+ * @property {number} gmtCreate 创建时间戳
+ * @property {string} modifier 最后修改人ID（🚨仅表单包含该字段）
+ * @property {Object} modifyUser 最后修改人对象（🚨仅表单包含该字段）
+ * @property {number} gmtModified 最后修改时间戳
+ */
+
+/**
  * 查询表单实例数据响应对象
- * @typedef {Object} module:DataSource.FormDatasResponse
+ * @typedef {Object} FormDatasResponse
  * @property {number} totalCount 表单数据总条数
  * @property {number} currentPage 当前页码
  * @property {number} actualPageSize 接口返回的当前页数据量，当开启严格查询时，
  * 由于进行了额外的筛选，方法返回的数据量量可能小于接口返回的数据量
- * @property {Array&lt;Object>} formDatas 表单实例数据数组
+ * @property {Array&lt;module:DataSource~FormData>} formDatas 表单实例数据数组
  */
 
 /**
@@ -659,9 +695,9 @@ async function searchFormDataIdsAll(
  * @param {Object} searchFieldObject 表单组件查询条件对象
  * @param {number} currentPage 当前页， 默认为1
  * @param {number} pageSize 每页记录数， 默认为10
- * @param {module:DataSource.SearchFormDatasOption} options 查询选项
- * @returns {Promise&lt;Array&lt;module:DataSource.FormDatasResponse>>}
- * 一个Promise，resolve表单实例ID响应对象 {@link module:DataSource.FormDataIdsResponse}
+ * @param {module:DataSource~SearchFormDatasOption} options 查询选项
+ * @returns {Promise&lt;Array&lt;module:DataSource~FormDatasResponse>>}
+ * 一个Promise，resolve表单实例ID响应对象 {@link module:DataSource~FormDatasResponse}
  *
  * @example
  * // 使用前请添加数据源：
@@ -757,13 +793,40 @@ async function searchFormDatas(
 
   const response = await req;
   const { currentPage: cPage, totalCount, data } = response;
-  let formDatas = (data || []).map((item) => ({
-    ...item,
-    // 普通表单的表单数据在formData属性中
-    ...item.formData,
-    // 流程表单的表单数据在data属性中
-    ...item.data,
-  }));
+  let formDatas = [];
+  if (type === "form") {
+    formDatas = (data || []).map((item) => ({
+      title: item.title,
+      formUuid: item.formUuid,
+      instanceId: item.formInstId,
+      creator: item.creator,
+      originator: item.originator,
+      originatorCorpId: item.originatorCorpId,
+      originatorCorpName: item.originatorCorpName,
+      gmtCreate: item.gmtCreate,
+      modifier: item.modifier,
+      modifyUser: item.modifyUser,
+      gmtModified: item.gmtModified,
+      // 普通表单的表单数据在formData属性中
+      ...item.formData,
+    }));
+  } else if (type === "process") {
+    formDatas = (data || []).map((item) => ({
+      title: item.title,
+      formUuid: item.formUuid,
+      instanceId: item.processInstanceId,
+      processCode: item.processCode,
+      instanceStatus: item.instanceStatus,
+      approvedResult: item.approvedResult,
+      originator: item.originator,
+      originatorCorpId: item.originatorCorpId,
+      originatorCorpName: item.originatorCorpName,
+      gmtCreate: item.gmtCreate,
+      gmtModified: item.gmtModified,
+      // 流程表单的表单数据在data属性中
+      ...item.data,
+    }));
+  }
 
   const actualPageSize = formDatas.length;
   // 严格查询，对结果集进一步筛选，所有文本类型字段值必须和查询条件严格匹配
@@ -801,7 +864,7 @@ async function searchFormDatas(
  * @param {"form" | "process"} type 表单类型，可选 form、process，分别代表普通表单和流程
  * @param {string} formUuid 表单ID
  * @param {Object} searchFieldObject 表单组件查询条件对象
- * @param {module:DataSource.SearchFormDatasOption} options 查询选项
+ * @param {module:DataSource~SearchFormDatasOption} options 查询选项
  * @returns {Promise&lt;Array&lt;Object>>} 一个Promise，resolve表单实例数据数组
  *
  * @example
@@ -973,7 +1036,7 @@ export {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue Jan 30 2024 19:03:26 GMT+0800 (China Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Feb 02 2024 17:20:56 GMT+0800 (China Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

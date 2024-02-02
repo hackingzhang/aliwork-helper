@@ -15,6 +15,14 @@ import { round } from "./utils";
  */
 
 /**
+ * setDatas 方法 option 参数类型定义
+ * @typedef {Object} SubformSetDatasOption
+ * @property {boolean} doNotValidate 是否阻止自动校验，默认为 false
+ * @property {boolean} formatted 是否已经格式化，默认为 false
+ * @property {boolean} triggerChange 是否触发组件值变化事件，默认为 true
+ */
+
+/**
  * 子表工具类，提供子表常用操作方法 <br/>
  *
  * 概念解释： <br/>
@@ -75,13 +83,14 @@ class Subform {
   /**
    * 设置整个子表的数据
    * @param {Array<Object>} datas 子表数据列表
+   * @param {module:Subform~SubformSetDatasOption} [options] 配置项
    *
    * @example
    * const subform = new Subform(this, "tableField_xxxxxx");
    * subform.setDatas([...datas]); // 等效于 this.$("tableField_xxxxxx").setValue([...datas]);
    */
-  setDatas(datas) {
-    this.instance.setValue(datas);
+  setDatas(datas, options) {
+    this.instance.setValue(datas, options);
   }
 
   /**

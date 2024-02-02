@@ -97,7 +97,7 @@ formGroupId：一个ID字符串，是子表数据项的唯一标识</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line23">line 23</a>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -282,7 +282,7 @@ formGroupId：一个ID字符串，是子表数据项的唯一标识</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line71">line 71</a>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -396,7 +396,7 @@ const dataList = subform.getDatas(); // 等效于 this.$("tableField_xxxxxx").ge
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line122">line 122</a>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line131">line 131</a>
     </li></ul></dd>
     
 
@@ -560,7 +560,7 @@ subform.getFormGroupId(0); // "tfitem_1"</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line108">line 108</a>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line117">line 117</a>
     </li></ul></dd>
     
 
@@ -724,7 +724,7 @@ subform.getIndex("tfitem_1"); // 0</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line59">line 59</a>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -839,7 +839,7 @@ tableField.getValue();</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line95">line 95</a>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line104">line 104</a>
     </li></ul></dd>
     
 
@@ -937,7 +937,7 @@ subform.getItems(); // ["tfitem_1", "tfitem_2"]</code></pre>
 
     
 
-    <h4 class="name" id="setDatas"><span class="type-signature"></span>setDatas<span class="signature">(datas)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setDatas"><span class="type-signature"></span>setDatas<span class="signature">(datas, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -953,7 +953,7 @@ subform.getItems(); // ["tfitem_1", "tfitem_2"]</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line83">line 83</a>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line92">line 92</a>
     </li></ul></dd>
     
 
@@ -1019,6 +1019,8 @@ subform.setDatas([...datas]); // 等效于 this.$("tableField_xxxxxx").setValue(
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -1045,10 +1047,52 @@ subform.setDatas([...datas]); // 等效于 this.$("tableField_xxxxxx").setValue(
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last">子表数据列表</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-Subform.html#~SubformSetDatasOption">module:Subform~SubformSetDatasOption</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">配置项</td>
         </tr>
 
     
@@ -1094,7 +1138,7 @@ subform.setDatas([...datas]); // 等效于 this.$("tableField_xxxxxx").setValue(
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line157">line 157</a>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line166">line 166</a>
     </li></ul></dd>
     
 
@@ -1345,7 +1389,7 @@ subform.summary("textField_xxxxxx", "string", { ignoreEmpty: true, ignoreDuplica
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line139">line 139</a>
+        <a href="subform.js.html">subform.js</a>, <a href="subform.js.html#line148">line 148</a>
     </li></ul></dd>
     
 
@@ -1515,7 +1559,7 @@ subform.updateItem("tfitem_1", { "tableField_xxxxxx": "new value" });</code></pr
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue Jan 30 2024 19:03:26 GMT+0800 (China Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Feb 02 2024 17:20:56 GMT+0800 (China Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
