@@ -99,9 +99,9 @@ class Subform {
    *
    * @example
    * const subform = new Subform(this, "tableField_xxxxxx");
-   * subform.getItems(); // ["tfitem_1", "tfitem_2"]
+   * subform.getFormGroupIds(); // ["tfitem_1", "tfitem_2"]
    */
-  getItems() {
+  getFormGroupIds() {
     return this.instance.getItems();
   }
 
@@ -115,7 +115,7 @@ class Subform {
    * subform.getIndex("tfitem_1"); // 0
    */
   getIndex(formGroupId) {
-    const items = this.getItems() || [];
+    const items = this.getFormGroupIds() || [];
     return items.findIndex((item) => item === formGroupId);
   }
 
@@ -129,8 +129,27 @@ class Subform {
    * subform.getFormGroupId(0); // "tfitem_1"
    */
   getFormGroupId(index) {
-    const items = this.getItems() || [];
+    const items = this.getFormGroupIds() || [];
     return items[index];
+  }
+
+  /**
+   * 获取子表单行数据
+   * @param {string | number} id 可传入行下标或者formGroupId
+   * @return {Object} 单行子表数据
+   *
+   * @example
+   * const subform = new Subform(this, "tableField_xxxxxx");
+   * // 使用索引下标获取数据行
+   * subform.getItem(0);
+   * // 使用formGroupId获取数据行
+   * subform.getItem("tfitem_1");
+   */
+  getItem(id) {
+    if (typeof id === "string") {
+      id = this.getIndex(id);
+    }
+    return this.getDatas()[id];
   }
 
   /**
