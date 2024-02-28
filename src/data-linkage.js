@@ -58,8 +58,11 @@ function resolveConditionMap(
       value = (dpt || {}).value;
     }
     if (condition.from.startsWith("employeeField")) {
-      const employee = (value || [])[0];
-      value = (employee || {}).key;
+      if (!Array.isArray(value)) {
+        value = [value];
+      }
+      const employee = value[0];
+      value = (employee || {}).value;
     }
 
     searchParams[condition.to] = value;
