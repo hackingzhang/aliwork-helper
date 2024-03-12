@@ -378,7 +378,7 @@ function fieldValueDiff(fieldType, newVal, oldVal) {
     }, []);
     // 删除的元素
     const removed = arrayOldVal.reduce((coll, current) => {
-      const match = arrayOldVal.find((item) => {
+      const match = arrayNewVal.find((item) => {
         return fieldValueEqualSingle(fieldType, item, current);
       });
       if (match) return coll;
