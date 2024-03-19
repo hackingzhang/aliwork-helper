@@ -584,7 +584,7 @@
       }, []);
       // 删除的元素
       const removed = arrayOldVal.reduce((coll, current) => {
-        const match = arrayOldVal.find((item) => {
+        const match = arrayNewVal.find((item) => {
           return fieldValueEqualSingle(fieldType, item, current);
         });
         if (match) return coll;
@@ -1193,7 +1193,7 @@
    *   "FORM-xxxxxx",
    *   { textField_xxxxxx: "hello" },
    *   1, 100,
-   *   { dynamicOrder: "numberField_xxx": "+" }
+   *   { dynamicOrder: { "numberField_xxx": "+" } }
    * ).then((resp) => {
    *     const { currentPage, totalCount, ids } = resp;
    *     console.log(`共${totalCount}条数据`);
@@ -1210,7 +1210,7 @@
    *   "FORM-xxxxxx",
    *   { textField_xxxxxx: "hello" },
    *   1, 100,
-   *   { dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
+   *   { dynamicOrder: { "numberField_xxx": "+" }, instanceStatus: "COMPLETED" }
    * ).then((resp) => {
    *     const { currentPage, totalCount, ids } = resp;
    *     console.log(`共${e.totalCount}条数据`);
@@ -1368,7 +1368,7 @@
    * @property {string} formUuid 表单formUuid
    * @property {string} instanceId 实例ID
    * @property {string} processCode 流程码（🚨仅流程包含该字段）
-   * @property {module:DataSource~ProcessStatus} instanceStatus 
+   * @property {module:DataSource~ProcessStatus} instanceStatus
    * 流程状态（🚨仅流程包含该字段），可能值为：RUNNING, TERMINATED, COMPLETED, ERROR。分别代表：运行中，已终止，已完成，异常。
    * @property {module:DataSource~ApprovedResult} approvedResult 审批结果（🚨仅流程包含该字段）
    * @property {string} creator 创建人ID（🚨仅表单包含该字段）
@@ -1592,7 +1592,7 @@
    *   "FORM-xxxxxx",
    *   { textField_xxxxxx: "hello" },
    *   // 精确查询，按照numberField_xxx升序排序
-   *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+" }
+   *   { strictQuery: true, dynamicOrder: { "numberField_xxx": "+" } }
    * ).then((formDatas) => {
    *     console.log("查询成功", formDatas);
    *   },(e) => {
@@ -1607,7 +1607,7 @@
    *   "FORM-xxxxxx",
    *   { textField_xxxxxx: "hello" },
    *   // 精确查询，流程状态已完成，按照numberField_xxx升序排序
-   *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
+   *   { strictQuery: true, dynamicOrder: { "numberField_xxx": "+" }, instanceStatus: "COMPLETED" }
    * ).then((formDatas) => {
    *     console.log("查询成功", formDatas);
    *   },(e) => {
@@ -1714,6 +1714,113 @@
     }
 
     await req;
+  }
+
+  /**
+   * 流程审批记录对象
+   * @typedef {Object} OperationRecord
+   * @property {string} action 动作描述文本，仅已处理节点有该字段
+   * @property {"submit" | "agree" | "disagree" | "doing" | "next"} actionExt 动作描述码，
+   * submit表示提交节点、agree表示节点审批结果为同意、disagree表示审批结果为不同意、
+   * doing表示当前节点，next表示此节点为后续待审批节点
+   * @property {string} activityId 活动ID
+   * @property {Array} domains
+   * @property {string} operator 操作人ID
+   * @property {string[]} operatorAgentIds 代理人ID
+   * @property {string} operatorDisplayName 操作人显示名
+   * @property {string} operatorName 操作人姓名
+   * @property {string} operatorPhotoUrl 操作人头像链接
+   * @property {string} processInstanceId 流程实例ID
+   * @property {string} showName 节点名
+   * @property {number} size -
+   * @property {number} taskHoldTime 任务持续时间？
+   * @property {string} taskId 任务ID
+   * @property {"HISTORY" | "TODO"} type 记录类型，HISTORY表示已处理的节点，TODO表示待处理节点
+   */
+
+  /**
+   * 获取流程审批记录
+   * @static
+   * @param {Object} context this上下文
+   * @param {string} instanceId 流程实例ID
+   * @return {Promise<module:DataSource~OperationRecord>} 一个Promise，resolve流程审批记录列表
+   *
+   * @example
+   * // 使用前请添加数据源：
+   * // 名称：getOperationRecords
+   * // 请求方法：GET
+   * // 请求地址：/dingtalk/web/APP_xxxxxx/v1/process/getOperationRecords.json
+   *
+   * getOperationRecords(this, "2c517124-e73e-4528-acc8-28216c6c8df9")
+   * .then((records) => {
+   *     console.log("获取成功", records);
+   *   },(e) => {
+   *     console.log(`获取失败：${e.message}`);
+   *   }
+   * );
+   */
+  async function getOperationRecords(context, instanceId) {
+    if (!instanceId) throw Error("instanceId is required");
+
+    return await context.dataSourceMap.getOperationRecords.load({
+      processInstanceId: instanceId,
+    });
+  }
+
+  /**
+   * 执行流程单个任务/流程节点审批
+   * @static
+   * @param {Object} context this上下文
+   * @param {string} instanceId 实例ID
+   * @param {string} taskId 任务ID，可通过 {@link module:DataSource.getOperationRecords} 方法获取流程当前及历史节点taskId
+   * @param {"AGREE" | "DISAGREE"} result 审批结果
+   * @param {string} remark 审批意见
+   * @param {Object} [formData] 表单数据对象
+   * @param {boolean} [noExecuteExpressions] 是否<strong>不执行</strong>校验&关联操作
+   * @return {Promise} 一个Promise
+   *
+   * @example
+   * // 使用前请添加数据源：
+   * // 名称：executeTask
+   * // 请求方法：POST
+   * // 请求地址：/dingtalk/web/APP_xxxxxx/v1/task/executeTask.json
+   *
+   * executeTask(this, "FINST-xxxxxx", "25748312227", "AGREE", "同意", {}, 'n')
+   * .then(() => {
+   *     console.log("执行成功");
+   *   },(e) => {
+   *     console.log(`执行失败`);
+   *   }
+   * );
+   */
+  async function executeTask(
+    context,
+    instanceId,
+    taskId,
+    result,
+    remark,
+    formData,
+    noExecuteExpressions
+  ) {
+    if (!instanceId) throw Error("instanceId is required");
+    if (!taskId) throw Error("taskId is required");
+    if (!result) throw Error("审批结果必填");
+    if (!remark) throw Error("审批意见必填");
+
+    const formDataJson = JSON.stringify(formData || {});
+
+    if (typeof noExecuteExpressions === "boolean") {
+      noExecuteExpressions = noExecuteExpressions ? "y" : "n";
+    }
+
+    await context.dataSourceMap.executeTask.load({
+      procInstId: instanceId,
+      taskId,
+      outResult: result,
+      remark,
+      formDataJson,
+      noExecuteExpressions,
+    });
   }
 
   /**
@@ -2008,9 +2115,9 @@
      *
      * @example
      * const subform = new Subform(this, "tableField_xxxxxx");
-     * subform.getItems(); // ["tfitem_1", "tfitem_2"]
+     * subform.getFormGroupIds(); // ["tfitem_1", "tfitem_2"]
      */
-    getItems() {
+    getFormGroupIds() {
       return this.instance.getItems();
     }
 
@@ -2024,7 +2131,7 @@
      * subform.getIndex("tfitem_1"); // 0
      */
     getIndex(formGroupId) {
-      const items = this.getItems() || [];
+      const items = this.getFormGroupIds() || [];
       return items.findIndex((item) => item === formGroupId);
     }
 
@@ -2038,8 +2145,27 @@
      * subform.getFormGroupId(0); // "tfitem_1"
      */
     getFormGroupId(index) {
-      const items = this.getItems() || [];
+      const items = this.getFormGroupIds() || [];
       return items[index];
+    }
+
+    /**
+     * 获取子表单行数据
+     * @param {string | number} id 可传入行下标或者formGroupId
+     * @return {Object} 单行子表数据
+     *
+     * @example
+     * const subform = new Subform(this, "tableField_xxxxxx");
+     * // 使用索引下标获取数据行
+     * subform.getItem(0);
+     * // 使用formGroupId获取数据行
+     * subform.getItem("tfitem_1");
+     */
+    getItem(id) {
+      if (typeof id === "string") {
+        id = this.getIndex(id);
+      }
+      return this.getDatas()[id];
     }
 
     /**
@@ -2548,8 +2674,11 @@
         value = (dpt || {}).value;
       }
       if (condition.from.startsWith("employeeField")) {
-        const employee = (value || [])[0];
-        value = (employee || {}).key;
+        if (!Array.isArray(value)) {
+          value = [value];
+        }
+        const employee = value[0];
+        value = (employee || {}).value;
       }
 
       searchParams[condition.to] = value;
@@ -2767,6 +2896,7 @@
   exports.dateTimeFormat = dateTimeFormat;
   exports.deleteFormData = deleteFormData;
   exports.dialog = dialog;
+  exports.executeTask = executeTask;
   exports.fetchSubformDatas = fetchSubformDatas;
   exports.fetchSubformDatasAll = fetchSubformDatasAll;
   exports.fieldToString = fieldToString;
@@ -2779,6 +2909,7 @@
   exports.getFieldDataTypeById = getFieldDataTypeById;
   exports.getFieldTypeById = getFieldTypeById;
   exports.getFormData = getFormData;
+  exports.getOperationRecords = getOperationRecords;
   exports.hijackSubmit = hijackSubmit;
   exports.isEmpty = isEmpty;
   exports.loading = loading;
