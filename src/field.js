@@ -411,9 +411,8 @@ function fieldValueDiff(fieldType, newVal, oldVal) {
  * fieldToString(date, getFieldTypeById("employeeField_lrh6iy5m")); // "[张三,李四]"
  */
 function fieldToString(value, fieldType) {
-  if (value === undefined || value === null) {
-    return "";
-  }
+  if (value === undefined || value === null) return "";
+  if (typeof value === "string") return value;
 
   let str = "";
   switch (fieldType) {
@@ -453,6 +452,8 @@ function fieldToString(value, fieldType) {
     case "departmentSelect":
     case "countrySelect": {
       const names = value.map((item) => {
+        if (typeof item === "string") return item;
+
         const { text } = item;
         if (typeof text === "string") {
           return text;
