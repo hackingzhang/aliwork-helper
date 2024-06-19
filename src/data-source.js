@@ -1,9 +1,40 @@
 /**
- * 跨应用数据源相关方法封装, 详情参考宜搭文档 {@link https://docs.aliwork.com/docs/developer/api/openAPI}
+ * 跨应用数据源以及连接器接口请求封装, 详情参考宜搭文档 {@link https://docs.aliwork.com/docs/developer/api/openAPI}
  * @module DataSource
  */
 
 import { getFieldTypeById } from "./field";
+
+/**
+ * 调用连接器
+ * @static
+ * @param {object} context this上下文
+ * @param {string} connectorName 连接器名称，数据源面板中添加连接器时配置的名称
+ * @param {object} params 连接器执行动作参数
+ * @returns {Promise<object>}
+ * 
+ * @example
+ * // 假设要通过连接器调用钉钉接口获取部门下的子部门信息
+ * invokeConnector(this, "subDepts", {
+ *   Query: {
+ *     access_token: ""
+ *   },
+ *   Body: {
+ *     dept_id: 1
+ *   }
+ * }).then((resp) => {
+ *   console.log("请求成功: ", resp);
+ * }, (e) => {
+ *   console.log(`请求失败：${e.message}`);
+ * })
+ */
+async function invokeConnector(context, connectorName, params) {
+  const resp = await context.dataSourceMap[connectorName].load({
+    inputs: JSON.stringify(params)
+  });
+
+  return resp;
+}
 
 /**
  * 删除表单实例数据
@@ -1075,4 +1106,5 @@ export {
   deleteFormData,
   getOperationRecords,
   executeTask,
+  invokeConnector,
 };
