@@ -70,7 +70,7 @@ class BatchTaskRunner {
   }
 
   /**
-   * @private
+   * @access private
    * 检查 taskProvider 类型，并返回类型字符串。如果任务提供者不符合类型要求则会抛出异常。
    * @param {*} taskProvider 任务提供者
    * @returns {"function" | "generator"}
@@ -91,7 +91,7 @@ class BatchTaskRunner {
   }
 
   /**
-   * @private
+   * @access private
    * 从任务提供者获取单个任务
    * @returns {Task}
    */
@@ -112,7 +112,7 @@ class BatchTaskRunner {
   }
 
   /**
-   * @private
+   * @access private
    * 执行一个批次的批量任务
    * @param {Function[]} tasks
    */

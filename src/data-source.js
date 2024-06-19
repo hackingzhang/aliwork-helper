@@ -692,6 +692,7 @@ async function searchFormDataIdsAll(
  *   "form",
  *   "FORM-xxxxxx",
  *   { textField_xxxxxx: "hello" },
+ *   1, 100,
  *   // 精确查询，按照numberField_xxx升序排序
  *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+" }
  * ).then((resp) => {
@@ -709,6 +710,7 @@ async function searchFormDataIdsAll(
  *   "process",
  *   "FORM-xxxxxx",
  *   { textField_xxxxxx: "hello" },
+ *   1, 100,
  *   // 精确查询，流程状态已完成，按照numberField_xxx升序排序
  *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
  * ).then((ids) => {

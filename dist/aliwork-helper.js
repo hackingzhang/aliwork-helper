@@ -323,7 +323,7 @@
    * 🤯通过数据源获取到的表单数据，部门字段的值就是部门ID和部门名称分开的两个数组，
    * 可以直接将其传入来生成可赋值给部门组件的部门字段数据。
    * @static
-   * @param {string | string[]} id 部门ID，接受单个ID字符串或者ID数组
+   * @param {string | number | string[] | number[]} id 部门ID，接受单个ID或者ID数组
    * @param {string | string[]} name 部门名称，接受单个名称字符串或者名称数组
    * @returns {object} 部门字段数据
    *
@@ -344,7 +344,7 @@
   function generateDptFieldData(id, name) {
     let ids = id;
     let names = name;
-    if (typeof id === "string") {
+    if (typeof id === "string" || typeof id === "number") {
       ids = [id];
       names = [name];
     }
@@ -354,7 +354,7 @@
     return ids.map((id, index) => {
       return {
         text: names[index],
-        value: id,
+        value: String(id),
       };
     });
   }
@@ -763,10 +763,41 @@
   }
 
   /**
-   * 跨应用数据源相关方法封装, 详情参考宜搭文档 {@link https://docs.aliwork.com/docs/developer/api/openAPI}
+   * 跨应用数据源以及连接器接口请求封装, 详情参考宜搭文档 {@link https://docs.aliwork.com/docs/developer/api/openAPI}
    * @module DataSource
    */
 
+
+  /**
+   * 调用连接器
+   * @static
+   * @param {object} context this上下文
+   * @param {string} connectorName 连接器名称，数据源面板中添加连接器时配置的名称
+   * @param {object} params 连接器执行动作参数
+   * @returns {Promise<object>}
+   * 
+   * @example
+   * // 假设要通过连接器调用钉钉接口获取部门下的子部门信息
+   * invokeConnector(this, "subDepts", {
+   *   Query: {
+   *     access_token: ""
+   *   },
+   *   Body: {
+   *     dept_id: 1
+   *   }
+   * }).then((resp) => {
+   *   console.log("请求成功: ", resp);
+   * }, (e) => {
+   *   console.log(`请求失败：${e.message}`);
+   * })
+   */
+  async function invokeConnector(context, connectorName, params) {
+    const resp = await context.dataSourceMap[connectorName].load({
+      inputs: JSON.stringify(params)
+    });
+
+    return resp;
+  }
 
   /**
    * 删除表单实例数据
@@ -1424,6 +1455,7 @@
    *   "form",
    *   "FORM-xxxxxx",
    *   { textField_xxxxxx: "hello" },
+   *   1, 100,
    *   // 精确查询，按照numberField_xxx升序排序
    *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+" }
    * ).then((resp) => {
@@ -1441,6 +1473,7 @@
    *   "process",
    *   "FORM-xxxxxx",
    *   { textField_xxxxxx: "hello" },
+   *   1, 100,
    *   // 精确查询，流程状态已完成，按照numberField_xxx升序排序
    *   { strictQuery: true, dynamicOrder: "numberField_xxx": "+", instanceStatus: "COMPLETED" }
    * ).then((ids) => {
@@ -2927,7 +2960,7 @@
    *   }
    * })();
    *
-   * // 批量处理任务，10个任务为一批次，如果某个任务失败了，会重试三次
+   * // 批量处理任务，10个任务为一批次
    * new BatchTaskRunner(
    *   taskProvider,
    *   10,
@@ -2941,8 +2974,8 @@
     /**
      * 构造器
      * @param {Generator<Task> | module:BatchTaskRunner~FnTaskProvider} taskProvider 任务提供者，可以传入一个函数或者生成器。
-     * 任务是一个函数，任务函数应当返回一个 Promise，Promise敲定即认定任务结束。
-     * 如果任务提供者是一个函数，当此函数返回 falsy 值则认为所有任务都已提供完毕，BatchTaskRunner 将会在执行完最后一个批次后结束。
+     * 一个任务就是一个函数，任务函数应当返回一个 Promise，Promise敲定即认定任务结束。<br />
+     * 如果任务提供者是一个函数，当此函数返回 falsy 值则认为所有任务都已提供完毕，BatchTaskRunner 将会在执行完最后一个批次后结束。<br />
      * 如果任务提供者是一个生成器，则会遍历生成器来获取任务，遍历完成后 BatchTaskRunner 将会在执行完最后一个批次后结束。
      * @param {number} batchSize 一个批次处理多少任务
      * @param {module:BatchTaskRunner~BatchTaskRunnerOptions} options 选项
@@ -2960,7 +2993,7 @@
     }
 
     /**
-     * @private
+     * @access private
      * 检查 taskProvider 类型，并返回类型字符串。如果任务提供者不符合类型要求则会抛出异常。
      * @param {*} taskProvider 任务提供者
      * @returns {"function" | "generator"}
@@ -2981,7 +3014,7 @@
     }
 
     /**
-     * @private
+     * @access private
      * 从任务提供者获取单个任务
      * @returns {Task}
      */
@@ -3002,7 +3035,7 @@
     }
 
     /**
-     * @private
+     * @access private
      * 执行一个批次的批量任务
      * @param {Function[]} tasks
      */
@@ -3060,6 +3093,7 @@
   exports.getFormData = getFormData;
   exports.getOperationRecords = getOperationRecords;
   exports.hijackSubmit = hijackSubmit;
+  exports.invokeConnector = invokeConnector;
   exports.isEmpty = isEmpty;
   exports.loading = loading;
   exports.mergeTo = mergeTo;
