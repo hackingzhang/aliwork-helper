@@ -117,7 +117,7 @@ function getFieldTypeById(fieldId) {
  * 🤯通过数据源获取到的表单数据，部门字段的值就是部门ID和部门名称分开的两个数组，
  * 可以直接将其传入来生成可赋值给部门组件的部门字段数据。
  * @static
- * @param {string | string[]} id 部门ID，接受单个ID字符串或者ID数组
+ * @param {string | number | string[] | number[]} id 部门ID，接受单个ID或者ID数组
  * @param {string | string[]} name 部门名称，接受单个名称字符串或者名称数组
  * @returns {object} 部门字段数据
  *
@@ -138,7 +138,7 @@ function getFieldTypeById(fieldId) {
 function generateDptFieldData(id, name) {
   let ids = id;
   let names = name;
-  if (typeof id === "string") {
+  if (typeof id === "string" || typeof id === "number") {
     ids = [id];
     names = [name];
   }
@@ -148,7 +148,7 @@ function generateDptFieldData(id, name) {
   return ids.map((id, index) => {
     return {
       text: names[index],
-      value: id,
+      value: String(id),
     };
   });
 }
